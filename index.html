@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Abb Lab — A creative laboratory where science meets art. Experiments in design, code, media, and ideas by Abbey.">
+  <meta name="keywords" content="The Abb Lab, Abbey, creative studio, design lab, digital experiments">
+  <meta name="author" content="Abbey">
+  <meta name="theme-color" content="#0a0b0f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theabblab.com/">
+  <meta property="og:title" content="The Abb Lab — Creative Laboratory">
+  <meta property="og:description" content="A creative laboratory where science meets art. Experiments in design, code, media, and ideas.">
+  <meta property="og:site_name" content="The Abb Lab">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Abb Lab — Creative Laboratory">
+  <meta name="twitter:description" content="A creative laboratory where science meets art.">
+
+  <title>The Abb Lab — Creative Laboratory</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
+  <link rel="canonical" href="https://theabblab.com/">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#hero" class="nav__logo" aria-label="The Abb Lab — Home">
+        <img src="assets/logo/logo.svg" alt="" width="36" height="36" class="nav__logo-icon">
+        <span class="nav__logo-text">The Abb Lab</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#projects" class="nav__link">Lab Work</a></li>
+        <li><a href="#merch" class="nav__link">Merch</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__logo-bg">
+          <span class="hero__logo-line hero__logo-line--top">The</span>
+          <span class="hero__logo-line hero__logo-line--main">Abb Lab</span>
+        </div>
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--teal"></div>
+        <div class="hero__glow hero__glow--purple"></div>
+        <div class="hero__particles" id="particles"></div>
+      </div>
+
+      <div class="hero__content container">
+        <p class="hero__eyebrow reveal">Creative Laboratory</p>
+        <h1 class="hero__title reveal" id="hero-heading">
+          Where <em>science</em> meets <em>art</em>
+        </h1>
+        <p class="hero__tagline reveal">
+          Experiments in design, code, media, and ideas — crafted with precision and imagination.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#projects" class="btn btn--primary">Explore Lab Work</a>
+          <a href="#merch" class="btn btn--ghost">Shop Merch</a>
+        </div>
+        <div class="hero__scroll reveal" aria-hidden="true">
+          <span class="hero__scroll-text">Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">About</span>
+          <h2 class="section__title" id="about-heading">The Laboratory</h2>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__content reveal">
+            <p class="about__lead">
+              <strong>The Abb Lab</strong> is a creative studio built on curiosity — a space where Abbey experiments at the intersection of technology, design, and storytelling.
+            </p>
+            <p>
+              Part laboratory, part atelier. Every project starts as a hypothesis: what if we could make something beautiful, useful, and a little bit unexpected? From digital tools and visual media to merch and side experiments, this is where ideas are tested, refined, and released into the world.
+            </p>
+            <ul class="about__stats">
+              <li class="about__stat">
+                <span class="about__stat-value">∞</span>
+                <span class="about__stat-label">Experiments</span>
+              </li>
+              <li class="about__stat">
+                <span class="about__stat-value">1</span>
+                <span class="about__stat-label">Lab Director</span>
+              </li>
+              <li class="about__stat">
+                <span class="about__stat-value">100%</span>
+                <span class="about__stat-label">Crafted</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="about__visual reveal" aria-hidden="true">
+            <div class="about__flask">
+              <div class="about__flask-neck"></div>
+              <div class="about__flask-body">
+                <div class="about__flask-liquid"></div>
+                <div class="about__flask-bubbles">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="about__flask-base"></div>
+            </div>
+            <div class="about__orbit">
+              <span class="about__orbit-dot"></span>
+              <span class="about__orbit-ring"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects / Lab Work -->
+    <section class="projects section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Lab Work</span>
+          <h2 class="section__title" id="projects-heading">Active Experiments</h2>
+          <p class="section__desc">Selected projects from the lab — tools, media, and creative builds in progress or released.</p>
+        </div>
+
+        <div class="projects__grid">
+          <article class="project-card reveal">
+            <div class="project-card__visual project-card__visual--1">
+              <span class="project-card__tag">Media</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Faceless Video Studio</h3>
+              <p class="project-card__desc">Cinematic short-form storytelling pipeline for YouTube Shorts, TikTok, and Reels — fully automated, fully faceless.</p>
+              <a href="#" class="project-card__link" aria-label="View Faceless Video Studio project">
+                View Experiment
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__visual project-card__visual--2">
+              <span class="project-card__tag">Audio</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Abbey's Tones</h3>
+              <p class="project-card__desc">A curated sonic laboratory — ambient compositions, radio experiments, and audio tools for creative workflows.</p>
+              <a href="#" class="project-card__link" aria-label="View Abbey's Tones project">
+                View Experiment
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__visual project-card__visual--3">
+              <span class="project-card__tag">Tools</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Operator Dashboards</h3>
+              <p class="project-card__desc">Modular control panels and automation interfaces — built for creators who run their own creative infrastructure.</p>
+              <a href="#" class="project-card__link" aria-label="View Operator Dashboards project">
+                View Experiment
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card__visual project-card__visual--4">
+              <span class="project-card__tag">Design</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Prompt Library</h3>
+              <p class="project-card__desc">A living archive of refined AI prompts and creative frameworks — tested, documented, and ready to deploy.</p>
+              <a href="#" class="project-card__link" aria-label="View Prompt Library project">
+                View Experiment
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merch / Shop -->
+    <section class="merch section" id="merch" aria-labelledby="merch-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Merch</span>
+          <h2 class="section__title" id="merch-heading">From the Lab</h2>
+          <p class="section__desc">Wearable experiments and printed artifacts — designed in-house, fulfilled via Printful.</p>
+        </div>
+
+        <div class="merch__grid">
+          <article class="merch-card reveal">
+            <div class="merch-card__image merch-card__image--1" role="img" aria-label="The Abb Lab logo tee"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Lab Logo Tee</h3>
+              <p class="merch-card__price">$28.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-printful="lab-logo-tee">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal">
+            <div class="merch-card__image merch-card__image--2" role="img" aria-label="Experiment in Progress hoodie"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Experiment Hoodie</h3>
+              <p class="merch-card__price">$48.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-printful="experiment-hoodie">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal">
+            <div class="merch-card__image merch-card__image--3" role="img" aria-label="Abb Lab notebook"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Lab Notebook</h3>
+              <p class="merch-card__price">$18.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-printful="lab-notebook">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal">
+            <div class="merch-card__image merch-card__image--4" role="img" aria-label="Science meets art poster"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Art Print</h3>
+              <p class="merch-card__price">$24.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-printful="art-print">Shop Now</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <span class="section__label">Contact</span>
+            <h2 class="section__title" id="contact-heading">Start a Collaboration</h2>
+            <p class="contact__desc">
+              Have an experiment in mind? Want to collaborate, commission work, or just say hello? Drop a message — the lab is always open to new hypotheses.
+            </p>
+
+            <ul class="contact__links">
+              <li>
+                <a href="mailto:hello@theabblab.com" class="contact__link">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  hello@theabblab.com
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/theabblab" class="contact__link" target="_blank" rel="noopener noreferrer">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  @theabblab
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/theabblab" class="contact__link" target="_blank" rel="noopener noreferrer">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
+                  @theabblab
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact__form reveal" id="contactForm" novalidate>
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <input type="text" id="name" name="name" class="form__input" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form__group">
+              <label for="subject" class="form__label">Subject</label>
+              <input type="text" id="subject" name="subject" class="form__input" placeholder="Collaboration, commission, hello…">
+            </div>
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea id="message" name="message" class="form__input form__textarea" rows="5" placeholder="Tell me about your experiment…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              <span class="btn__text">Send Message</span>
+              <span class="btn__loader" aria-hidden="true"></span>
+            </button>
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo/logo.svg" alt="" width="28" height="28">
+        <span>The Abb Lab</span>
+      </div>
+      <p class="footer__copy">&copy; <span id="year"></span> The Abb Lab. All experiments reserved.</p>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Lab Work</a>
+        <a href="#merch">Merch</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

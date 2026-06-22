@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="54" stroke="url(#logoGrad)" stroke-width="2" opacity="0.6"/>
+  <circle cx="60" cy="60" r="38" stroke="url(#logoGrad)" stroke-width="1.5" opacity="0.4"/>
+  <path d="M60 28 L60 92 M28 60 L92 60" stroke="url(#logoGrad)" stroke-width="1" opacity="0.25"/>
+  <text x="60" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="600" fill="url(#logoGrad)">Ab</text>
+  <circle cx="60" cy="60" r="4" fill="#2dd4bf" opacity="0.9"/>
+</svg>
