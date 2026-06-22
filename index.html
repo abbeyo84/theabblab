@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Abb Lab — A creative laboratory where science meets art. Experiments in design, code, media, and ideas by Abbey.">
-  <meta name="keywords" content="The Abb Lab, Abbey, creative studio, design lab, digital experiments">
-  <meta name="author" content="Abbey">
+  <meta name="description" content="The Abb Lab — Commerce and creative laboratory of ABBEYO ENTERTAINMENT. Limited-edition merchandise, Bitcoin apparel, and curated digital releases.">
+  <meta name="keywords" content="The Abb Lab, ABBEYO Entertainment, Bitcoin merch, limited collections, Strange Realms, digital lab">
+  <meta name="author" content="ABBEYO ENTERTAINMENT">
   <meta name="theme-color" content="#0a0b0f">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theabblab.com/">
-  <meta property="og:title" content="The Abb Lab — Creative Laboratory">
-  <meta property="og:description" content="A creative laboratory where science meets art. Experiments in design, code, media, and ideas.">
+  <meta property="og:title" content="The Abb Lab — ABBEYO ENTERTAINMENT">
+  <meta property="og:description" content="Commerce lab for limited merchandise, Bitcoin apparel, and curated creative releases.">
   <meta property="og:site_name" content="The Abb Lab">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Abb Lab — Creative Laboratory">
-  <meta name="twitter:description" content="A creative laboratory where science meets art.">
+  <meta name="twitter:title" content="The Abb Lab — ABBEYO ENTERTAINMENT">
+  <meta name="twitter:description" content="Commerce lab for limited merchandise, Bitcoin apparel, and curated creative releases.">
 
-  <title>The Abb Lab — Creative Laboratory</title>
+  <title>The Abb Lab — ABBEYO ENTERTAINMENT</title>
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg">
   <link rel="canonical" href="https://theabblab.com/">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -34,7 +31,6 @@
 </head>
 <body>
 
-  <!-- Navigation -->
   <header class="site-header" id="header">
     <nav class="nav container" aria-label="Main navigation">
       <a href="#hero" class="nav__logo" aria-label="The Abb Lab — Home">
@@ -49,9 +45,23 @@
       </button>
 
       <ul class="nav__menu" id="navMenu">
-        <li><a href="#about" class="nav__link">About</a></li>
-        <li><a href="#projects" class="nav__link">Lab Work</a></li>
-        <li><a href="#merch" class="nav__link">Merch</a></li>
+        <li><a href="#shop" class="nav__link">Shop</a></li>
+        <li><a href="#collections" class="nav__link">Collections</a></li>
+        <li class="nav__dropdown">
+          <button class="nav__link nav__dropdown-btn" id="libraryToggle" aria-expanded="false" aria-controls="libraryMenu">
+            Library
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </button>
+          <ul class="nav__dropdown-menu" id="libraryMenu">
+            <li><a href="#audio" class="nav__dropdown-link">Audio</a></li>
+            <li><a href="#video" class="nav__dropdown-link">Video</a></li>
+            <li><a href="#documents" class="nav__dropdown-link">Documents</a></li>
+            <li><a href="#tools" class="nav__dropdown-link">Tools</a></li>
+            <li><a href="#pictures" class="nav__dropdown-link">Pictures</a></li>
+            <li><a href="#ai" class="nav__dropdown-link">AI</a></li>
+          </ul>
+        </li>
+        <li><a href="#releases" class="nav__link">Releases</a></li>
         <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
       </ul>
     </nav>
@@ -73,16 +83,16 @@
       </div>
 
       <div class="hero__content container">
-        <p class="hero__eyebrow reveal">Creative Laboratory</p>
+        <p class="hero__eyebrow reveal">An ABBEYO ENTERTAINMENT Company</p>
         <h1 class="hero__title reveal" id="hero-heading">
-          Where <em>science</em> meets <em>art</em>
+          Commerce <em>&amp;</em> creative lab
         </h1>
         <p class="hero__tagline reveal">
-          Experiments in design, code, media, and ideas — crafted with precision and imagination.
+          Limited merchandise drops, Bitcoin apparel, and curated digital releases — engineered for collectors and fans.
         </p>
         <div class="hero__actions reveal">
-          <a href="#projects" class="btn btn--primary">Explore Lab Work</a>
-          <a href="#merch" class="btn btn--ghost">Shop Merch</a>
+          <a href="#shop" class="btn btn--primary">Shop Now</a>
+          <a href="#collections" class="btn btn--ghost">View Collections</a>
         </div>
         <div class="hero__scroll reveal" aria-hidden="true">
           <span class="hero__scroll-text">Scroll</span>
@@ -102,10 +112,10 @@
         <div class="about__grid">
           <div class="about__content reveal">
             <p class="about__lead">
-              <strong>The Abb Lab</strong> is a creative studio built on curiosity — a space where Abbey experiments at the intersection of technology, design, and storytelling.
+              <strong>The Abb Lab</strong> is the commerce and creative laboratory of <strong>ABBEYO ENTERTAINMENT</strong> — where limited merchandise, digital releases, and experimental media are designed, tested, and distributed.
             </p>
             <p>
-              Part laboratory, part atelier. Every project starts as a hypothesis: what if we could make something beautiful, useful, and a little bit unexpected? From digital tools and visual media to merch and side experiments, this is where ideas are tested, refined, and released into the world.
+              Part storefront, part archive. The lab runs rotating collections — from Bitcoin-themed apparel to immersive art worlds like Strange Realms — alongside a growing library of audio, video, documents, tools, pictures, and AI resources shared on our terms.
             </p>
             <ul class="about__stats">
               <li class="about__stat">
@@ -113,12 +123,12 @@
                 <span class="about__stat-label">Experiments</span>
               </li>
               <li class="about__stat">
-                <span class="about__stat-value">1</span>
-                <span class="about__stat-label">Lab Director</span>
+                <span class="about__stat-value">AE</span>
+                <span class="about__stat-label">Parent Co.</span>
               </li>
               <li class="about__stat">
-                <span class="about__stat-value">100%</span>
-                <span class="about__stat-label">Crafted</span>
+                <span class="about__stat-value">Limited</span>
+                <span class="about__stat-label">Drops</span>
               </li>
             </ul>
           </div>
@@ -143,120 +153,399 @@
       </div>
     </section>
 
-    <!-- Projects / Lab Work -->
-    <section class="projects section" id="projects" aria-labelledby="projects-heading">
+    <!-- Shop -->
+    <section class="shop section" id="shop" aria-labelledby="shop-heading">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__label">Lab Work</span>
-          <h2 class="section__title" id="projects-heading">Active Experiments</h2>
-          <p class="section__desc">Selected projects from the lab — tools, media, and creative builds in progress or released.</p>
+          <span class="section__label">Shop</span>
+          <h2 class="section__title" id="shop-heading">The Store</h2>
+          <p class="section__desc">Apparel, prints, and artifacts from the lab. Filter by collection or browse everything.</p>
         </div>
 
-        <div class="projects__grid">
-          <article class="project-card reveal">
-            <div class="project-card__visual project-card__visual--1">
-              <span class="project-card__tag">Media</span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Faceless Video Studio</h3>
-              <p class="project-card__desc">Cinematic short-form storytelling pipeline for YouTube Shorts, TikTok, and Reels — fully automated, fully faceless.</p>
-              <a href="#" class="project-card__link" aria-label="View Faceless Video Studio project">
-                View Experiment
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+        <div class="shop__filters reveal" role="tablist" aria-label="Shop categories">
+          <button class="shop__filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="shop__filter" data-filter="bitcoin" role="tab" aria-selected="false">Bitcoin</button>
+          <button class="shop__filter" data-filter="strange-realms" role="tab" aria-selected="false">Strange Realms</button>
+          <button class="shop__filter" data-filter="core" role="tab" aria-selected="false">Abb Lab Core</button>
+        </div>
+
+        <div class="shop__grid">
+          <article class="merch-card reveal" data-category="bitcoin">
+            <span class="merch-card__badge">Bitcoin</span>
+            <div class="merch-card__image merch-card__image--btc" role="img" aria-label="Bitcoin logo tee"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">₿ Logo Tee</h3>
+              <p class="merch-card__price">$32.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="btc-logo-tee">Shop Now</a>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-card__visual project-card__visual--2">
-              <span class="project-card__tag">Audio</span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Abbey's Tones</h3>
-              <p class="project-card__desc">A curated sonic laboratory — ambient compositions, radio experiments, and audio tools for creative workflows.</p>
-              <a href="#" class="project-card__link" aria-label="View Abbey's Tones project">
-                View Experiment
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+          <article class="merch-card reveal" data-category="bitcoin">
+            <span class="merch-card__badge">Bitcoin</span>
+            <div class="merch-card__image merch-card__image--btc2" role="img" aria-label="HODL hoodie"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">HODL Hoodie</h3>
+              <p class="merch-card__price">$54.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="hodl-hoodie">Shop Now</a>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-card__visual project-card__visual--3">
-              <span class="project-card__tag">Tools</span>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Operator Dashboards</h3>
-              <p class="project-card__desc">Modular control panels and automation interfaces — built for creators who run their own creative infrastructure.</p>
-              <a href="#" class="project-card__link" aria-label="View Operator Dashboards project">
-                View Experiment
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+          <article class="merch-card reveal" data-category="strange-realms">
+            <span class="merch-card__badge merch-card__badge--limited">Limited</span>
+            <div class="merch-card__image merch-card__image--realms" role="img" aria-label="Strange Realms art tee"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Strange Realms Tee</h3>
+              <p class="merch-card__price">$36.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="strange-realms-tee">Shop Now</a>
             </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-card__visual project-card__visual--4">
-              <span class="project-card__tag">Design</span>
+          <article class="merch-card reveal" data-category="strange-realms">
+            <span class="merch-card__badge merch-card__badge--limited">Limited</span>
+            <div class="merch-card__image merch-card__image--realms2" role="img" aria-label="Strange Realms poster"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Realm Portal Print</h3>
+              <p class="merch-card__price">$28.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="realm-portal-print">Shop Now</a>
             </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Prompt Library</h3>
-              <p class="project-card__desc">A living archive of refined AI prompts and creative frameworks — tested, documented, and ready to deploy.</p>
-              <a href="#" class="project-card__link" aria-label="View Prompt Library project">
-                View Experiment
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+          </article>
+
+          <article class="merch-card reveal" data-category="core">
+            <div class="merch-card__image merch-card__image--1" role="img" aria-label="The Abb Lab logo tee"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Lab Logo Tee</h3>
+              <p class="merch-card__price">$28.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="lab-logo-tee">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal" data-category="core">
+            <div class="merch-card__image merch-card__image--2" role="img" aria-label="Abb Lab hoodie"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Lab Hoodie</h3>
+              <p class="merch-card__price">$48.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="lab-hoodie">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal" data-category="core">
+            <div class="merch-card__image merch-card__image--3" role="img" aria-label="Lab notebook"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Lab Notebook</h3>
+              <p class="merch-card__price">$18.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="lab-notebook">Shop Now</a>
+            </div>
+          </article>
+
+          <article class="merch-card reveal" data-category="bitcoin">
+            <span class="merch-card__badge">Bitcoin</span>
+            <div class="merch-card__image merch-card__image--btc3" role="img" aria-label="Satoshi cap"></div>
+            <div class="merch-card__info">
+              <h3 class="merch-card__title">Satoshi Cap</h3>
+              <p class="merch-card__price">$26.00</p>
+              <a href="#" class="btn btn--small btn--primary" data-shop="satoshi-cap">Shop Now</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Merch / Shop -->
-    <section class="merch section" id="merch" aria-labelledby="merch-heading">
+    <!-- Collections -->
+    <section class="collections section" id="collections" aria-labelledby="collections-heading">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__label">Merch</span>
-          <h2 class="section__title" id="merch-heading">From the Lab</h2>
-          <p class="section__desc">Wearable experiments and printed artifacts — designed in-house, fulfilled via Printful.</p>
+          <span class="section__label">Collections</span>
+          <h2 class="section__title" id="collections-heading">Limited Drops</h2>
+          <p class="section__desc">Rotating collections — when they're gone, they're gone. Check back for new experiments.</p>
         </div>
 
-        <div class="merch__grid">
-          <article class="merch-card reveal">
-            <div class="merch-card__image merch-card__image--1" role="img" aria-label="The Abb Lab logo tee"></div>
-            <div class="merch-card__info">
-              <h3 class="merch-card__title">Lab Logo Tee</h3>
-              <p class="merch-card__price">$28.00</p>
-              <a href="#" class="btn btn--small btn--primary" data-printful="lab-logo-tee">Shop Now</a>
+        <div class="collections__grid">
+          <article class="collection-card collection-card--featured reveal">
+            <div class="collection-card__visual collection-card__visual--realms" aria-hidden="true"></div>
+            <div class="collection-card__body">
+              <span class="collection-card__status collection-card__status--live">Live Now</span>
+              <h3 class="collection-card__title">Strange Realms</h3>
+              <p class="collection-card__desc">Art merchandise from impossible worlds — tees, prints, and artifacts from dimensions that shouldn't exist.</p>
+              <a href="#shop" class="btn btn--ghost btn--small" data-scroll="strange-realms">Shop Collection</a>
             </div>
           </article>
 
-          <article class="merch-card reveal">
-            <div class="merch-card__image merch-card__image--2" role="img" aria-label="Experiment in Progress hoodie"></div>
-            <div class="merch-card__info">
-              <h3 class="merch-card__title">Experiment Hoodie</h3>
-              <p class="merch-card__price">$48.00</p>
-              <a href="#" class="btn btn--small btn--primary" data-printful="experiment-hoodie">Shop Now</a>
+          <article class="collection-card reveal">
+            <div class="collection-card__visual collection-card__visual--btc" aria-hidden="true"></div>
+            <div class="collection-card__body">
+              <span class="collection-card__status collection-card__status--live">Live Now</span>
+              <h3 class="collection-card__title">Bitcoin Series</h3>
+              <p class="collection-card__desc">Premium Bitcoin-themed apparel and accessories — built for believers, collectors, and the culture.</p>
+              <a href="#shop" class="btn btn--ghost btn--small" data-scroll="bitcoin">Shop Collection</a>
             </div>
           </article>
 
-          <article class="merch-card reveal">
-            <div class="merch-card__image merch-card__image--3" role="img" aria-label="Abb Lab notebook"></div>
-            <div class="merch-card__info">
-              <h3 class="merch-card__title">Lab Notebook</h3>
-              <p class="merch-card__price">$18.00</p>
-              <a href="#" class="btn btn--small btn--primary" data-printful="lab-notebook">Shop Now</a>
+          <article class="collection-card reveal">
+            <div class="collection-card__visual collection-card__visual--core" aria-hidden="true"></div>
+            <div class="collection-card__body">
+              <span class="collection-card__status">Evergreen</span>
+              <h3 class="collection-card__title">Abb Lab Core</h3>
+              <p class="collection-card__desc">Signature lab branding — logo tees, hoodies, notebooks, and staples from the mother ship.</p>
+              <a href="#shop" class="btn btn--ghost btn--small" data-scroll="core">Shop Collection</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="merch-card reveal">
-            <div class="merch-card__image merch-card__image--4" role="img" aria-label="Science meets art poster"></div>
-            <div class="merch-card__info">
-              <h3 class="merch-card__title">Art Print</h3>
-              <p class="merch-card__price">$24.00</p>
-              <a href="#" class="btn btn--small btn--primary" data-printful="art-print">Shop Now</a>
+    <!-- Library Hub -->
+    <section class="library-hub section" id="library" aria-labelledby="library-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Library</span>
+          <h2 class="section__title" id="library-heading">The Lab Archive</h2>
+          <p class="section__desc">Curated releases from the lab — shared when ready. Browse by format.</p>
+        </div>
+
+        <div class="library-hub__grid">
+          <a href="#audio" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">♫</span>
+            <h3 class="hub-card__title">Audio</h3>
+            <p class="hub-card__desc">Soundscapes, mixes, and sonic experiments</p>
+          </a>
+          <a href="#video" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">▶</span>
+            <h3 class="hub-card__title">Video</h3>
+            <p class="hub-card__desc">Short films, reels, and visual stories</p>
+          </a>
+          <a href="#documents" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">▤</span>
+            <h3 class="hub-card__title">Documents</h3>
+            <p class="hub-card__desc">Guides, frameworks, and written releases</p>
+          </a>
+          <a href="#tools" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">⚙</span>
+            <h3 class="hub-card__title">Tools</h3>
+            <p class="hub-card__desc">Utilities, apps, and lab-built software</p>
+          </a>
+          <a href="#pictures" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">◈</span>
+            <h3 class="hub-card__title">Pictures</h3>
+            <p class="hub-card__desc">Art, photography, and visual archives</p>
+          </a>
+          <a href="#ai" class="hub-card reveal">
+            <span class="hub-card__icon" aria-hidden="true">◇</span>
+            <h3 class="hub-card__title">AI</h3>
+            <p class="hub-card__desc">Prompts, models, and AI experiments</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio -->
+    <section class="library-section section" id="audio" aria-labelledby="audio-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">Audio</span>
+          <h2 class="section__title" id="audio-heading">Sonic Releases</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--audio"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Drop 001</h3>
+              <p class="media-card__desc">First audio release from the lab — pending deployment.</p>
             </div>
           </article>
+          <article class="media-card media-card--empty reveal">
+            <p>More audio releases will appear here as they ship.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="library-section library-section--alt section" id="video" aria-labelledby="video-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">Video</span>
+          <h2 class="section__title" id="video-heading">Visual Releases</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--video"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Drop 001</h3>
+              <p class="media-card__desc">First video release from the lab — pending deployment.</p>
+            </div>
+          </article>
+          <article class="media-card media-card--empty reveal">
+            <p>More video releases will appear here as they ship.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documents -->
+    <section class="library-section section" id="documents" aria-labelledby="documents-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">Documents</span>
+          <h2 class="section__title" id="documents-heading">Written Releases</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--docs"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Drop 001</h3>
+              <p class="media-card__desc">First document release from the lab — pending deployment.</p>
+            </div>
+          </article>
+          <article class="media-card media-card--empty reveal">
+            <p>Guides, PDFs, and frameworks will be published here.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="library-section library-section--alt section" id="tools" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">Tools</span>
+          <h2 class="section__title" id="tools-heading">Lab Utilities</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--tools"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Drop 001</h3>
+              <p class="media-card__desc">First tool release from the lab — pending deployment.</p>
+            </div>
+          </article>
+          <article class="media-card media-card--empty reveal">
+            <p>Apps and utilities will be listed here when released.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pictures -->
+    <section class="library-section section" id="pictures" aria-labelledby="pictures-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">Pictures</span>
+          <h2 class="section__title" id="pictures-heading">Visual Archive</h2>
+        </div>
+        <div class="media-grid media-grid--gallery">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--pictures"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Gallery 001</h3>
+              <p class="media-card__desc">First picture release from the lab — pending deployment.</p>
+            </div>
+          </article>
+          <article class="media-card media-card--empty reveal">
+            <p>Art and photography collections will appear here.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI -->
+    <section class="library-section library-section--alt section" id="ai" aria-labelledby="ai-heading">
+      <div class="container">
+        <div class="library-section__header reveal">
+          <span class="section__label">AI</span>
+          <h2 class="section__title" id="ai-heading">AI Experiments</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-card reveal">
+            <div class="media-card__visual media-card__visual--ai"></div>
+            <div class="media-card__body">
+              <span class="media-card__tag">Coming Soon</span>
+              <h3 class="media-card__title">Drop 001</h3>
+              <p class="media-card__desc">First AI release from the lab — pending deployment.</p>
+            </div>
+          </article>
+          <article class="media-card media-card--empty reveal">
+            <p>Prompts, models, and AI resources will be shared here.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Releases -->
+    <section class="releases section" id="releases" aria-labelledby="releases-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Releases</span>
+          <h2 class="section__title" id="releases-heading">Latest from the Lab</h2>
+          <p class="section__desc">New drops across merch and media — updated as experiments ship.</p>
+        </div>
+
+        <ul class="releases__timeline">
+          <li class="release-item reveal">
+            <time class="release-item__date" datetime="2026-06">Jun 2026</time>
+            <div class="release-item__content">
+              <span class="release-item__type">Collection</span>
+              <h3 class="release-item__title">Strange Realms — Drop 001</h3>
+              <p>Limited art merchandise collection now live in the shop.</p>
+            </div>
+          </li>
+          <li class="release-item reveal">
+            <time class="release-item__date" datetime="2026-06">Jun 2026</time>
+            <div class="release-item__content">
+              <span class="release-item__type">Merch</span>
+              <h3 class="release-item__title">Bitcoin Series Launch</h3>
+              <p>Bitcoin apparel line added to the store — tees, hoodies, and caps.</p>
+            </div>
+          </li>
+          <li class="release-item reveal">
+            <time class="release-item__date" datetime="2026-06">Jun 2026</time>
+            <div class="release-item__content">
+              <span class="release-item__type">Site</span>
+              <h3 class="release-item__title">The Abb Lab Relaunch</h3>
+              <p>Commerce lab goes live under ABBEYO ENTERTAINMENT.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Archive -->
+    <section class="archive section" id="archive" aria-labelledby="archive-heading">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Archive</span>
+          <h2 class="section__title" id="archive-heading">Past Collections</h2>
+          <p class="section__desc">Sold-out and retired drops — preserved for the record.</p>
+        </div>
+
+        <div class="archive__grid">
+          <article class="archive-card reveal">
+            <span class="archive-card__status">Retired</span>
+            <h3 class="archive-card__title">No archived drops yet</h3>
+            <p class="archive-card__desc">Past limited collections will be logged here when they close.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscribe -->
+    <section class="subscribe section" id="subscribe" aria-labelledby="subscribe-heading">
+      <div class="container">
+        <div class="subscribe__inner reveal">
+          <div class="subscribe__content">
+            <span class="section__label">Stay Updated</span>
+            <h2 class="section__title" id="subscribe-heading">Drop Alerts</h2>
+            <p>Get notified when new collections, merch, and library releases go live.</p>
+          </div>
+          <form class="subscribe__form" id="subscribeForm" novalidate>
+            <input type="email" id="subscribeEmail" class="form__input" placeholder="your@email.com" required autocomplete="email" aria-label="Email for drop alerts">
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+            <p class="form__status" id="subscribeStatus" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -267,28 +556,22 @@
         <div class="contact__grid">
           <div class="contact__info reveal">
             <span class="section__label">Contact</span>
-            <h2 class="section__title" id="contact-heading">Start a Collaboration</h2>
+            <h2 class="section__title" id="contact-heading">Get in Touch</h2>
             <p class="contact__desc">
-              Have an experiment in mind? Want to collaborate, commission work, or just say hello? Drop a message — the lab is always open to new hypotheses.
+              Orders, partnerships, wholesale inquiries, and general lab business. The team responds during business hours.
             </p>
 
             <ul class="contact__links">
               <li>
-                <a href="mailto:hello@theabblab.com" class="contact__link">
+                <a href="mailto:orders@theabblab.com" class="contact__link">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  hello@theabblab.com
+                  orders@theabblab.com
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/theabblab" class="contact__link" target="_blank" rel="noopener noreferrer">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  @theabblab
-                </a>
-              </li>
-              <li>
-                <a href="https://instagram.com/theabblab" class="contact__link" target="_blank" rel="noopener noreferrer">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
-                  @theabblab
+                <a href="mailto:lab@theabblab.com" class="contact__link">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  lab@theabblab.com
                 </a>
               </li>
             </ul>
@@ -305,11 +588,16 @@
             </div>
             <div class="form__group">
               <label for="subject" class="form__label">Subject</label>
-              <input type="text" id="subject" name="subject" class="form__input" placeholder="Collaboration, commission, hello…">
+              <select id="subject" name="subject" class="form__input form__select">
+                <option value="order">Order Inquiry</option>
+                <option value="wholesale">Wholesale / Partnership</option>
+                <option value="press">Press / Media</option>
+                <option value="general">General</option>
+              </select>
             </div>
             <div class="form__group">
               <label for="message" class="form__label">Message</label>
-              <textarea id="message" name="message" class="form__input form__textarea" rows="5" placeholder="Tell me about your experiment…" required></textarea>
+              <textarea id="message" name="message" class="form__input form__textarea" rows="5" placeholder="How can the lab help?" required></textarea>
             </div>
             <button type="submit" class="btn btn--primary btn--full">
               <span class="btn__text">Send Message</span>
@@ -323,18 +611,20 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
         <img src="assets/logo/logo.svg" alt="" width="28" height="28">
-        <span>The Abb Lab</span>
+        <div>
+          <span class="footer__name">The Abb Lab</span>
+          <span class="footer__parent">An ABBEYO ENTERTAINMENT Company</span>
+        </div>
       </div>
-      <p class="footer__copy">&copy; <span id="year"></span> The Abb Lab. All experiments reserved.</p>
+      <p class="footer__copy">&copy; <span id="year"></span> ABBEYO ENTERTAINMENT. All rights reserved.</p>
       <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Lab Work</a>
-        <a href="#merch">Merch</a>
+        <a href="#shop">Shop</a>
+        <a href="#collections">Collections</a>
+        <a href="#library">Library</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>

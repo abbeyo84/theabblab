@@ -1,56 +1,55 @@
 /**
- * The Abb Lab — Main Script
- * Vanilla JS: navigation, scroll reveals, particles, form handling
+ * The Abb Lab — ABBEYO ENTERTAINMENT
+ * Navigation, shop filters, scroll reveals, forms
  */
 
 (function () {
   'use strict';
 
-  /* --- DOM References --- */
   const header = document.getElementById('header');
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav__link');
+  const navLinks = document.querySelectorAll('.nav__link, .nav__dropdown-link');
+  const libraryToggle = document.getElementById('libraryToggle');
+  const libraryDropdown = libraryToggle?.closest('.nav__dropdown');
   const reveals = document.querySelectorAll('.reveal');
   const particlesContainer = document.getElementById('particles');
   const contactForm = document.getElementById('contactForm');
+  const subscribeForm = document.getElementById('subscribeForm');
   const formStatus = document.getElementById('formStatus');
+  const subscribeStatus = document.getElementById('subscribeStatus');
   const yearEl = document.getElementById('year');
+  const shopFilters = document.querySelectorAll('.shop__filter');
+  const merchCards = document.querySelectorAll('.merch-card[data-category]');
 
-  /* --- Init --- */
   function init() {
     setYear();
     initHeader();
     initMobileNav();
+    initLibraryDropdown();
     initSmoothScroll();
     initScrollReveal();
     initActiveNav();
     initParticles();
+    initShopFilters();
+    initCollectionLinks();
+    initShopButtons();
     initContactForm();
-    initPrintfulPlaceholders();
+    initSubscribeForm();
     initHeroReveal();
   }
 
-  /* --- Footer Year --- */
   function setYear() {
-    if (yearEl) {
-      yearEl.textContent = new Date().getFullYear();
-    }
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
-  /* --- Sticky Header --- */
   function initHeader() {
     if (!header) return;
-
-    const onScroll = () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 40);
-    };
-
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
 
-  /* --- Mobile Navigation --- */
   function initMobileNav() {
     if (!navToggle || !navMenu) return;
 
@@ -59,26 +58,43 @@
       navMenu.classList.toggle('is-open', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (!isOpen && libraryDropdown) libraryDropdown.classList.remove('is-open');
     };
 
     navToggle.addEventListener('click', toggleMenu);
 
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
-        if (navMenu.classList.contains('is-open')) {
-          toggleMenu();
-        }
+        if (navMenu.classList.contains('is-open')) toggleMenu();
+        if (libraryDropdown) libraryDropdown.classList.remove('is-open');
       });
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
-        toggleMenu();
+      if (e.key === 'Escape') {
+        if (navMenu.classList.contains('is-open')) toggleMenu();
+        if (libraryDropdown) libraryDropdown.classList.remove('is-open');
       }
     });
   }
 
-  /* --- Smooth Scroll for Anchor Links --- */
+  function initLibraryDropdown() {
+    if (!libraryToggle || !libraryDropdown) return;
+
+    libraryToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = libraryDropdown.classList.toggle('is-open');
+      libraryToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!libraryDropdown.contains(e.target)) {
+        libraryDropdown.classList.remove('is-open');
+        libraryToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
@@ -89,25 +105,24 @@
         if (!target) return;
 
         e.preventDefault();
-
-        const headerOffset = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
-          10
-        );
-
-        const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-
-        window.scrollTo({ top, behavior: 'smooth' });
+        scrollToElement(target);
       });
     });
   }
 
-  /* --- Scroll Reveal (Intersection Observer) --- */
+  function scrollToElement(el) {
+    const headerOffset = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
+      10
+    );
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
   function initScrollReveal() {
     if (!reveals.length) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     if (prefersReducedMotion) {
       reveals.forEach((el) => el.classList.add('is-visible'));
       return;
@@ -122,20 +137,14 @@
           }
         });
       },
-      {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px',
-      }
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
 
     reveals.forEach((el) => {
-      if (!el.closest('.hero__content')) {
-        observer.observe(el);
-      }
+      if (!el.closest('.hero__content')) observer.observe(el);
     });
   }
 
-  /* --- Hero entrance (immediate on load) --- */
   function initHeroReveal() {
     const heroReveals = document.querySelectorAll('.hero__content .reveal');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -146,30 +155,20 @@
     }
 
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        heroReveals.forEach((el) => el.classList.add('is-visible'));
-      }, 100);
+      setTimeout(() => heroReveals.forEach((el) => el.classList.add('is-visible')), 100);
     });
   }
 
-  /* --- Active Nav Link on Scroll --- */
   function initActiveNav() {
     const sections = document.querySelectorAll('section[id]');
-    if (!sections.length || !navLinks.length) return;
-
-    const sectionMap = Array.from(sections).map((section) => ({
-      id: section.id,
-      el: section,
-    }));
+    if (!sections.length) return;
 
     const onScroll = () => {
       const scrollPos = window.scrollY + 120;
-
       let current = '';
-      sectionMap.forEach(({ id, el }) => {
-        if (el.offsetTop <= scrollPos) {
-          current = id;
-        }
+
+      sections.forEach((section) => {
+        if (section.offsetTop <= scrollPos) current = section.id;
       });
 
       navLinks.forEach((link) => {
@@ -182,12 +181,9 @@
     onScroll();
   }
 
-  /* --- Hero Particles --- */
   function initParticles() {
     if (!particlesContainer) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const count = window.innerWidth < 768 ? 12 : 24;
 
@@ -195,18 +191,13 @@
       const particle = document.createElement('span');
       particle.className = 'particle';
 
-      const left = Math.random() * 100;
-      const delay = Math.random() * 8;
-      const duration = 6 + Math.random() * 8;
-      const size = 2 + Math.random() * 3;
-
       particle.style.cssText = `
-        left: ${left}%;
+        left: ${Math.random() * 100}%;
         bottom: ${Math.random() * 30}%;
-        width: ${size}px;
-        height: ${size}px;
-        animation-duration: ${duration}s;
-        animation-delay: ${delay}s;
+        width: ${2 + Math.random() * 3}px;
+        height: ${2 + Math.random() * 3}px;
+        animation-duration: ${6 + Math.random() * 8}s;
+        animation-delay: ${Math.random() * 8}s;
         background: ${Math.random() > 0.5 ? '#2dd4bf' : '#8b5cf6'};
       `;
 
@@ -214,7 +205,53 @@
     }
   }
 
-  /* --- Contact Form --- */
+  function initShopFilters() {
+    if (!shopFilters.length) return;
+
+    shopFilters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        const category = filter.dataset.filter;
+
+        shopFilters.forEach((f) => {
+          const active = f === filter;
+          f.classList.toggle('is-active', active);
+          f.setAttribute('aria-selected', String(active));
+        });
+
+        merchCards.forEach((card) => {
+          const match = category === 'all' || card.dataset.category === category;
+          card.classList.toggle('is-hidden', !match);
+        });
+      });
+    });
+  }
+
+  function initCollectionLinks() {
+    document.querySelectorAll('[data-scroll]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.dataset.scroll;
+        const shop = document.getElementById('shop');
+        const targetFilter = document.querySelector(`.shop__filter[data-filter="${category}"]`);
+
+        if (shop) scrollToElement(shop);
+        if (targetFilter) targetFilter.click();
+      });
+    });
+  }
+
+  function initShopButtons() {
+    document.querySelectorAll('[data-shop]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const product = btn.getAttribute('data-shop');
+        console.info(`[The Abb Lab] Shop placeholder: ${product}`);
+        showStatus(formStatus, 'Store coming soon — connect your Printful or shop URL.', 'success');
+        setTimeout(() => showStatus(formStatus, '', ''), 3000);
+      });
+    });
+  }
+
   function initContactForm() {
     if (!contactForm) return;
 
@@ -227,26 +264,45 @@
       const message = contactForm.querySelector('#message');
 
       if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-        showFormStatus('Please fill in all required fields.', 'error');
+        showStatus(formStatus, 'Please fill in all required fields.', 'error');
         return;
       }
 
       if (!isValidEmail(email.value)) {
-        showFormStatus('Please enter a valid email address.', 'error');
+        showStatus(formStatus, 'Please enter a valid email address.', 'error');
         return;
       }
 
       submitBtn.classList.add('is-loading');
-      showFormStatus('', '');
+      showStatus(formStatus, '', '');
 
-      /* Simulate submission — replace with Formspree, Cloudflare Worker, etc. */
       await new Promise((resolve) => setTimeout(resolve, 1200));
 
       submitBtn.classList.remove('is-loading');
-      showFormStatus('Message sent! The lab will be in touch soon.', 'success');
+      showStatus(formStatus, 'Message received. The lab will respond shortly.', 'success');
       contactForm.reset();
+      setTimeout(() => showStatus(formStatus, '', ''), 5000);
+    });
+  }
 
-      setTimeout(() => showFormStatus('', ''), 5000);
+  function initSubscribeForm() {
+    if (!subscribeForm) return;
+
+    subscribeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = subscribeForm.querySelector('#subscribeEmail');
+      if (!email.value.trim() || !isValidEmail(email.value)) {
+        showStatus(subscribeStatus, 'Please enter a valid email address.', 'error');
+        return;
+      }
+
+      showStatus(subscribeStatus, '', '');
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      showStatus(subscribeStatus, 'Subscribed — you will receive drop alerts.', 'success');
+      subscribeForm.reset();
+      setTimeout(() => showStatus(subscribeStatus, '', ''), 5000);
     });
   }
 
@@ -254,33 +310,13 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
-  function showFormStatus(message, type) {
-    if (!formStatus) return;
-    formStatus.textContent = message;
-    formStatus.className = 'form__status';
-    if (type) formStatus.classList.add(`is-${type}`);
+  function showStatus(el, message, type) {
+    if (!el) return;
+    el.textContent = message;
+    el.className = 'form__status';
+    if (type) el.classList.add(`is-${type}`);
   }
 
-  /* --- Printful Shop Placeholders --- */
-  function initPrintfulPlaceholders() {
-    document.querySelectorAll('[data-printful]').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const product = btn.getAttribute('data-printful');
-        /* Replace href with actual Printful store URL when ready */
-        console.info(`[The Abb Lab] Shop link placeholder: ${product}`);
-        showFormStatus('Shop coming soon — connect your Printful store URL.', 'success');
-        setTimeout(() => {
-          if (formStatus) {
-            formStatus.textContent = '';
-            formStatus.className = 'form__status';
-          }
-        }, 3000);
-      });
-    });
-  }
-
-  /* --- Boot --- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
