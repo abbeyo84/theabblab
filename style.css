@@ -1141,11 +1141,60 @@ button {
   transition:
     transform var(--transition-base),
     border-color var(--transition-base);
+  display: block;
+  color: inherit;
 }
 
 .media-card:hover {
   transform: translateY(-2px);
   border-color: rgba(148, 163, 184, 0.12);
+}
+
+.media-card--featured:hover {
+  border-color: rgba(45, 212, 191, 0.25);
+  box-shadow: var(--shadow-glow-teal);
+}
+
+.media-card--featured .media-card__tag {
+  color: var(--color-teal);
+}
+
+.media-card__visual--radio {
+  background:
+    radial-gradient(circle at 40% 50%, rgba(51, 255, 102, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+    linear-gradient(135deg, #0f1a14 0%, #1a1528 50%, #111318 100%);
+}
+
+.media-card__live {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: 0.25rem 0.625rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ff2222;
+  background: rgba(10, 11, 15, 0.8);
+  border: 1px solid rgba(255, 34, 34, 0.3);
+  border-radius: var(--radius-full);
+  animation: ledPulse 1.5s ease-in-out infinite;
+}
+
+.media-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-teal);
+  transition: gap var(--transition-fast);
+}
+
+.media-card--featured:hover .media-card__cta {
+  gap: 0.65rem;
 }
 
 .media-card--empty {

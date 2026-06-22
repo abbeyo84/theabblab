@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ABBEYO RADIO — Premium internet radio player from The Abb Lab. Stream classic hits, indie, and curated stations.">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta property="og:title" content="ABBEYO RADIO — The Abb Lab">
+  <meta property="og:description" content="Premium internet radio — classic hits, indie, and curated stations.">
+  <title>ABBEYO RADIO — The Abb Lab</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="radio.css">
+</head>
+<body class="radio-page">
+
+  <div class="radio-page__bg" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="radio-topbar">
+      <a href="../index.html#audio" class="radio-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Audio
+      </a>
+      <div class="radio-brand">
+        <span class="radio-brand__parent">The Abb Lab · ABBEYO ENTERTAINMENT</span>
+        <span class="radio-brand__name">ABBEYO RADIO</span>
+      </div>
+    </header>
+
+    <main class="radio-player">
+      <div class="radio-unit">
+        <div class="radio-unit__header">
+          <h1 class="radio-unit__title">ABBEYO <span>Radio</span></h1>
+          <div class="radio-led" id="radioLed">
+            <span class="radio-led__dot"></span>
+            <span id="ledLabel">Standby</span>
+          </div>
+        </div>
+
+        <div class="radio-lcd" id="radioLcd">
+          <div class="radio-lcd__art">
+            <img id="nowPlayingArt" alt="" width="80" height="80" hidden>
+            <span class="radio-lcd__art-placeholder" id="artPlaceholder" aria-hidden="true">♫</span>
+          </div>
+          <div class="radio-lcd__info">
+            <p class="radio-lcd__station" id="nowPlayingStation">CKUE Cool FM</p>
+            <p class="radio-lcd__track" id="nowPlayingTrack">Ready to stream</p>
+            <p class="radio-lcd__artist" id="nowPlayingArtist">Classic Hits • 80s 90s Today</p>
+          </div>
+          <span class="radio-lcd__freq" id="nowPlayingFreq">95.1</span>
+        </div>
+
+        <div class="radio-vu" aria-hidden="true">
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+          <span class="radio-vu__bar"></span>
+        </div>
+
+        <div class="radio-presets" role="group" aria-label="Station presets">
+          <button class="radio-preset is-active" data-preset="0" aria-pressed="true">
+            <span class="radio-preset__num">1</span>CKUE
+          </button>
+          <button class="radio-preset" data-preset="1" aria-pressed="false">
+            <span class="radio-preset__num">2</span>KEXP
+          </button>
+          <button class="radio-preset" data-preset="2" aria-pressed="false">
+            <span class="radio-preset__num">3</span>Secret Agent
+          </button>
+          <button class="radio-preset" data-preset="3" aria-pressed="false">
+            <span class="radio-preset__num">4</span>u80s
+          </button>
+          <button class="radio-preset" data-preset="4" aria-pressed="false">
+            <span class="radio-preset__num">5</span>Space
+          </button>
+        </div>
+
+        <div class="radio-controls">
+          <button class="radio-play" id="playBtn" aria-label="Play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+
+          <div class="radio-volume">
+            <svg class="radio-volume__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3 8v4h3l4 4V4L6 8H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M13 7a4 4 0 010 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="range" class="radio-volume__slider" id="volumeSlider" min="0" max="100" value="80" aria-label="Volume">
+          </div>
+
+          <button class="radio-theme-toggle" id="themeToggle" type="button">LCD: Green</button>
+        </div>
+
+        <p class="radio-status" id="radioStatus" role="status" aria-live="polite">Press play or hit spacebar to start</p>
+      </div>
+
+      <audio id="radioAudio" preload="none" crossorigin="anonymous"></audio>
+    </main>
+
+    <section class="radio-stations-info" aria-labelledby="stations-heading">
+      <h2 id="stations-heading">Station Guide</h2>
+      <ul class="radio-station-list">
+        <li class="radio-station-item"><strong>CKUE Cool FM</strong> — <span>Classic Hits • 80s 90s Today · 95.1 / 100.7</span></li>
+        <li class="radio-station-item"><strong>KEXP 90.3</strong> — <span>Seattle Independent Radio</span></li>
+        <li class="radio-station-item"><strong>SomaFM Secret Agent</strong> — <span>Spy Lounge • 60s Cool</span></li>
+        <li class="radio-station-item"><strong>SomaFM u80s</strong> — <span>Underground 80s</span></li>
+        <li class="radio-station-item"><strong>SomaFM Space Station</strong> — <span>Spaced-out ambient &amp; electronica</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="radio.js" defer></script>
+</body>
+</html>
