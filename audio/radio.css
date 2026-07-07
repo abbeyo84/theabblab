@@ -273,8 +273,15 @@
   gap: 0.5rem;
   margin-bottom: var(--space-md);
   position: relative;
-  z-index: 1;
+  z-index: 5;
   min-height: 52px;
+  pointer-events: auto;
+}
+
+.radio-controls {
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .radio-page .radio-preset {
@@ -288,6 +295,10 @@
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: var(--radius-sm);
   cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 5;
   transition:
     background var(--transition-fast),
     border-color var(--transition-fast),
@@ -305,6 +316,10 @@
   background: var(--color-teal-dim);
   border-color: var(--color-teal);
   color: var(--color-teal);
+}
+
+.radio-page .radio-preset:active {
+  transform: scale(0.97);
 }
 
 .radio-preset__num {
