@@ -17,24 +17,6 @@
     },
     {
       id: 1,
-      short: 'KEXP',
-      name: 'KEXP 90.3',
-      url: 'https://kexp.streamguys1.com/kexp160.aac',
-      freq: '90.3',
-      desc: 'Seattle Independent Radio',
-      somaChannel: null,
-    },
-    {
-      id: 2,
-      short: 'Secret Agent',
-      name: 'SomaFM Secret Agent',
-      url: 'https://ice1.somafm.com/secretagent-128-mp3',
-      freq: 'SOMA',
-      desc: 'Spy Lounge • 60s Cool',
-      somaChannel: 'secretagent',
-    },
-    {
-      id: 3,
       short: 'u80s',
       name: 'SomaFM u80s',
       url: 'https://ice1.somafm.com/u80s-128-mp3',
@@ -43,7 +25,7 @@
       somaChannel: 'u80s',
     },
     {
-      id: 4,
+      id: 2,
       short: 'Space',
       name: 'SomaFM Space Station',
       url: 'https://ice1.somafm.com/spacestation-128-mp3',
@@ -53,7 +35,7 @@
     },
   ];
 
-  const STORAGE_KEY = 'abbeyo_radio_web_v3';
+  const STORAGE_KEY = 'abbeyo_radio_web_v4';
   const CONNECT_TIMEOUT_MS = 15000;
 
   const audio = document.getElementById('radioAudio');
