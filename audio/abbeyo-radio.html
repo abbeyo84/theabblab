@@ -76,13 +76,30 @@
         </div>
 
         <div class="radio-presets" id="radioPresets" role="group" aria-label="Station presets">
-          <button type="button" class="radio-preset is-active" data-preset="0" aria-pressed="true">
+          <button type="button" class="radio-preset is-active" aria-pressed="true"
+            data-station-id="ckue"
+            data-name="CKUE Cool FM"
+            data-url="https://blackburn-ais.leanstream.co/CKUEF2-MP3?args=web_02"
+            data-freq="95.1 / 100.7"
+            data-desc="Classic Hits • 80s 90s Today">
             <span class="radio-preset__num">1</span>CKUE
           </button>
-          <button type="button" class="radio-preset" data-preset="1" aria-pressed="false">
+          <button type="button" class="radio-preset" aria-pressed="false"
+            data-station-id="u80s"
+            data-name="SomaFM u80s"
+            data-url="https://ice1.somafm.com/u80s-128-mp3"
+            data-freq="SOMA"
+            data-desc="Underground 80s"
+            data-soma="u80s">
             <span class="radio-preset__num">2</span>u80s
           </button>
-          <button type="button" class="radio-preset" data-preset="2" aria-pressed="false">
+          <button type="button" class="radio-preset" aria-pressed="false"
+            data-station-id="space"
+            data-name="SomaFM Space Station"
+            data-url="https://ice1.somafm.com/spacestation-128-mp3"
+            data-freq="SOMA"
+            data-desc="Spaced-out ambient &amp; electronica"
+            data-soma="spacestation">
             <span class="radio-preset__num">3</span>Space
           </button>
         </div>
@@ -119,6 +136,6 @@
     </section>
   </div>
 
-  <script src="/audio/radio.js" defer></script>
+  <script src="/audio/radio.js?v=5" defer></script>
 </body>
 </html>
