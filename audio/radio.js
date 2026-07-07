@@ -131,6 +131,7 @@
   }
 
   function updatePresetButtons() {
+    if (!presetsContainer) return;
     presetsContainer.querySelectorAll('.radio-preset').forEach((btn) => {
       const index = parseInt(btn.dataset.preset, 10);
       const active = index === currentStation;
@@ -173,8 +174,8 @@
       }
 
       function onError() {
-        const code = audio.error?.code ?? 'unknown';
-        const msg = audio.error?.message || `Media error code ${code}`;
+        const code = (audio.error && audio.error.code) || 'unknown';
+        const msg = (audio.error && audio.error.message) || ('Media error code ' + code);
         finish(new Error(msg));
       }
 
@@ -263,7 +264,7 @@
       const res = await fetch(`https://api.deezer.com/search?q=${q}&limit=1`);
       if (!res.ok) return null;
       const data = await res.json();
-      return data.data?.[0]?.album?.cover_medium || null;
+      return (data.data && data.data[0] && data.data[0].album && data.data[0].album.cover_medium) || null;
     } catch (_) {
       return null;
     }
@@ -274,7 +275,7 @@
       const res = await fetch(`https://somafm.com/songs/${channel}.json`);
       if (!res.ok) return null;
       const data = await res.json();
-      return data.songs?.[0] || null;
+      return (data.songs && data.songs[0]) || null;
     } catch (_) {
       return null;
     }
@@ -360,27 +361,14 @@
     playStation(STATIONS[currentStation]);
   }
 
-  function buildPresets() {
-    presetsContainer.innerHTML = STATIONS.map((station, index) => `
-      <button class="radio-preset" data-preset="${index}" aria-pressed="false">
-        <span class="radio-preset__num">${index + 1}</span>${station.short}
-      </button>
-    `).join('');
-
+  function initPresets() {
+    if (!presetsContainer) return;
     presetsContainer.querySelectorAll('.radio-preset').forEach((btn) => {
       btn.addEventListener('click', () => {
         const index = parseInt(btn.dataset.preset, 10);
-        selectStation(index, isPlaying);
+        if (!isNaN(index)) selectStation(index, isPlaying);
       });
     });
-  }
-
-  function buildStationList() {
-    stationListEl.innerHTML = STATIONS.map((station) => `
-      <li class="radio-station-item">
-        <strong>${station.name}</strong> — <span>${station.desc}${station.freq !== 'SOMA' ? ` · ${station.freq}` : ''}</span>
-      </li>
-    `).join('');
   }
 
   function initControls() {
@@ -420,14 +408,18 @@
   }
 
   function init() {
-    loadPrefs();
-    buildPresets();
-    buildStationList();
-    initControls();
-    updateStationUI(STATIONS[currentStation]);
-    audio.volume = volumeSlider.value / 100;
-    updatePlayButton();
-    setStatus('Press play or hit spacebar to start');
+    try {
+      loadPrefs();
+      initPresets();
+      initControls();
+      updateStationUI(STATIONS[currentStation]);
+      if (audio && volumeSlider) audio.volume = volumeSlider.value / 100;
+      updatePlayButton();
+      setStatus('Press play or hit spacebar to start');
+    } catch (err) {
+      console.error('[ABBEYO RADIO] Init failed:', err);
+      setStatus('Player loaded with limited features — refresh if buttons do not respond.', true);
+    }
   }
 
   if (document.readyState === 'loading') {

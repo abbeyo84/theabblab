@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="radio.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/audio/radio.css">
 </head>
 <body class="radio-page">
 
@@ -75,7 +75,23 @@
           <span class="radio-vu__bar"></span>
         </div>
 
-        <div class="radio-presets" id="radioPresets" role="group" aria-label="Station presets"></div>
+        <div class="radio-presets" id="radioPresets" role="group" aria-label="Station presets">
+          <button type="button" class="radio-preset is-active" data-preset="0" aria-pressed="true">
+            <span class="radio-preset__num">1</span>CKUE
+          </button>
+          <button type="button" class="radio-preset" data-preset="1" aria-pressed="false">
+            <span class="radio-preset__num">2</span>KEXP
+          </button>
+          <button type="button" class="radio-preset" data-preset="2" aria-pressed="false">
+            <span class="radio-preset__num">3</span>Secret Agent
+          </button>
+          <button type="button" class="radio-preset" data-preset="3" aria-pressed="false">
+            <span class="radio-preset__num">4</span>u80s
+          </button>
+          <button type="button" class="radio-preset" data-preset="4" aria-pressed="false">
+            <span class="radio-preset__num">5</span>Space
+          </button>
+        </div>
 
         <div class="radio-controls">
           <button class="radio-play" id="playBtn" aria-label="Play">
@@ -101,10 +117,16 @@
 
     <section class="radio-stations-info" aria-labelledby="stations-heading">
       <h2 id="stations-heading">Station Guide</h2>
-      <ul class="radio-station-list" id="stationList"></ul>
+      <ul class="radio-station-list" id="stationList">
+        <li class="radio-station-item"><strong>CKUE Cool FM</strong> — <span>Classic Hits • 80s 90s Today · 95.1 / 100.7</span></li>
+        <li class="radio-station-item"><strong>KEXP 90.3</strong> — <span>Seattle Independent Radio · 90.3</span></li>
+        <li class="radio-station-item"><strong>SomaFM Secret Agent</strong> — <span>Spy Lounge • 60s Cool</span></li>
+        <li class="radio-station-item"><strong>SomaFM u80s</strong> — <span>Underground 80s</span></li>
+        <li class="radio-station-item"><strong>SomaFM Space Station</strong> — <span>Spaced-out ambient &amp; electronica</span></li>
+      </ul>
     </section>
   </div>
 
-  <script src="radio.js" defer></script>
+  <script src="/audio/radio.js" defer></script>
 </body>
 </html>
