@@ -19,7 +19,7 @@
       id: 1,
       short: 'KEXP',
       name: 'KEXP 90.3',
-      url: 'https://kexp.streamguys1.com/kexp64.aac',
+      url: 'https://kexp.streamguys1.com/kexp160.aac',
       freq: '90.3',
       desc: 'Seattle Independent Radio',
       somaChannel: null,
@@ -28,7 +28,7 @@
       id: 2,
       short: 'Secret Agent',
       name: 'SomaFM Secret Agent',
-      url: 'https://ice.somafm.com/secretagent-128-mp3',
+      url: 'https://ice1.somafm.com/secretagent-128-mp3',
       freq: 'SOMA',
       desc: 'Spy Lounge • 60s Cool',
       somaChannel: 'secretagent',
@@ -37,7 +37,7 @@
       id: 3,
       short: 'u80s',
       name: 'SomaFM u80s',
-      url: 'https://ice.somafm.com/u80s-128-mp3',
+      url: 'https://ice1.somafm.com/u80s-128-mp3',
       freq: 'SOMA',
       desc: 'Underground 80s',
       somaChannel: 'u80s',
@@ -46,14 +46,15 @@
       id: 4,
       short: 'Space',
       name: 'SomaFM Space Station',
-      url: 'https://ice5.somafm.com/spacestation-128-mp3',
+      url: 'https://ice1.somafm.com/spacestation-128-mp3',
       freq: 'SOMA',
       desc: 'Spaced-out ambient & electronica',
       somaChannel: 'spacestation',
     },
   ];
 
-  const STORAGE_KEY = 'abbeyo_radio_web_v2';
+  const STORAGE_KEY = 'abbeyo_radio_web_v3';
+  const CONNECT_TIMEOUT_MS = 15000;
 
   const audio = document.getElementById('radioAudio');
   const playBtn = document.getElementById('playBtn');
@@ -80,6 +81,7 @@
   let metaInterval = null;
   let vuInterval = null;
   let lastMetaKey = '';
+  let connectToken = 0;
 
   function loadPrefs() {
     try {
@@ -129,8 +131,7 @@
   }
 
   function updatePresetButtons() {
-    const buttons = presetsContainer.querySelectorAll('.radio-preset');
-    buttons.forEach((btn) => {
+    presetsContainer.querySelectorAll('.radio-preset').forEach((btn) => {
       const index = parseInt(btn.dataset.preset, 10);
       const active = index === currentStation;
       btn.classList.toggle('is-active', active);
@@ -148,52 +149,74 @@
     updatePresetButtons();
   }
 
-  function loadStream(url) {
+  function startPlayback(station) {
+    const token = ++connectToken;
+    isSwitching = true;
+    setStatus('Connecting…');
+
     return new Promise((resolve, reject) => {
-      isSwitching = true;
+      let settled = false;
 
-      const onCanPlay = () => {
-        cleanup();
-        isSwitching = false;
-        resolve();
-      };
-
-      const onError = () => {
-        cleanup();
-        isSwitching = false;
-        const code = audio.error?.code || 'unknown';
-        reject(new Error(`Stream failed (code ${code})`));
-      };
-
-      const timeout = setTimeout(() => {
-        cleanup();
-        isSwitching = false;
-        if (audio.readyState >= 2) {
-          resolve();
-        } else {
-          reject(new Error('Stream connection timed out'));
-        }
-      }, 12000);
-
-      function cleanup() {
-        clearTimeout(timeout);
-        audio.removeEventListener('canplay', onCanPlay);
+      function finish(err) {
+        if (settled || token !== connectToken) return;
+        settled = true;
+        clearTimeout(timer);
+        audio.removeEventListener('playing', onPlaying);
         audio.removeEventListener('error', onError);
+        isSwitching = false;
+        if (err) reject(err);
+        else resolve();
       }
 
-      audio.pause();
-      audio.removeAttribute('src');
-      audio.load();
+      function onPlaying() {
+        finish(null);
+      }
 
-      audio.addEventListener('canplay', onCanPlay, { once: true });
+      function onError() {
+        const code = audio.error?.code ?? 'unknown';
+        const msg = audio.error?.message || `Media error code ${code}`;
+        finish(new Error(msg));
+      }
+
+      const timer = setTimeout(() => {
+        if (audio.readyState > 0 && !audio.paused) {
+          finish(null);
+        } else if (audio.readyState > 0) {
+          audio.play().catch((e) => finish(e));
+        } else {
+          finish(new Error('Connection timed out'));
+        }
+      }, CONNECT_TIMEOUT_MS);
+
+      audio.addEventListener('playing', onPlaying, { once: true });
       audio.addEventListener('error', onError, { once: true });
 
-      audio.src = url;
+      audio.pause();
+      audio.src = station.url;
       audio.load();
+      audio.play().catch((e) => finish(e));
     });
   }
 
-  async function selectStation(index, autoPlay = false) {
+  async function playStation(station) {
+    try {
+      await startPlayback(station);
+      isPlaying = true;
+      updatePlayButton();
+      startVuAnimation();
+      startMetaPolling();
+      setStatus(`Streaming ${station.name}`);
+      fetchMetadata();
+    } catch (err) {
+      isPlaying = false;
+      updatePlayButton();
+      stopVuAnimation();
+      stopMetaPolling();
+      onPlayError(err);
+    }
+  }
+
+  function selectStation(index, shouldPlay) {
     if (index < 0 || index >= STATIONS.length) return;
 
     currentStation = index;
@@ -201,25 +224,17 @@
     updateStationUI(station);
     savePrefs();
 
-    try {
-      await loadStream(station.url);
-      if (autoPlay || isPlaying) {
-        await audio.play();
-        isPlaying = true;
-        updatePlayButton();
-        startVuAnimation();
-        startMetaPolling();
-        setStatus(`Streaming ${station.name}`);
-      } else {
-        setStatus(`${station.name} selected — press play`);
-      }
-      fetchMetadata();
-    } catch (err) {
-      if (autoPlay || isPlaying) {
-        onPlayError(err);
-      } else {
-        setStatus(`${station.name} selected — press play to connect`);
-      }
+    if (shouldPlay) {
+      playStation(station);
+    } else {
+      connectToken++;
+      isSwitching = false;
+      audio.pause();
+      isPlaying = false;
+      updatePlayButton();
+      stopVuAnimation();
+      stopMetaPolling();
+      setStatus(`${station.name} selected — press play`);
     }
   }
 
@@ -325,17 +340,14 @@
   }
 
   function onPlayError(err) {
-    isPlaying = false;
-    updatePlayButton();
-    stopVuAnimation();
-    stopMetaPolling();
     const station = STATIONS[currentStation];
     setStatus(`Stream error on ${station.name} — try another preset or check your connection.`, true);
     console.error('[ABBEYO RADIO]', station.url, err);
   }
 
-  async function togglePlay() {
+  function togglePlay() {
     if (isPlaying) {
+      connectToken++;
       audio.pause();
       isPlaying = false;
       updatePlayButton();
@@ -345,27 +357,12 @@
       return;
     }
 
-    const station = STATIONS[currentStation];
-    setStatus('Connecting…');
-
-    try {
-      if (!audio.src || audio.readyState < 2) {
-        await loadStream(station.url);
-      }
-      await audio.play();
-      isPlaying = true;
-      updatePlayButton();
-      startVuAnimation();
-      startMetaPolling();
-      setStatus(`Streaming ${station.name}`);
-    } catch (err) {
-      onPlayError(err);
-    }
+    playStation(STATIONS[currentStation]);
   }
 
   function buildPresets() {
     presetsContainer.innerHTML = STATIONS.map((station, index) => `
-      <button class="radio-preset${index === 0 ? ' is-active' : ''}" data-preset="${index}" aria-pressed="${index === 0}">
+      <button class="radio-preset" data-preset="${index}" aria-pressed="false">
         <span class="radio-preset__num">${index + 1}</span>${station.short}
       </button>
     `).join('');
@@ -401,32 +398,12 @@
       savePrefs();
     });
 
-    audio.addEventListener('playing', () => {
-      isPlaying = true;
-      updatePlayButton();
-    });
-
-    audio.addEventListener('pause', () => {
-      if (!audio.ended && !isSwitching) {
-        isPlaying = false;
-        updatePlayButton();
-        stopVuAnimation();
-      }
-    });
-
     audio.addEventListener('waiting', () => {
-      if (!isSwitching) setStatus('Buffering…');
+      if (!isSwitching && isPlaying) setStatus('Buffering…');
     });
 
     audio.addEventListener('stalled', () => {
-      if (!isSwitching) setStatus('Connection stalled — retrying…', true);
-    });
-
-    audio.addEventListener('error', () => {
-      if (isSwitching) return;
-      if (isPlaying) {
-        onPlayError(new Error(audio.error?.message || 'Playback failed'));
-      }
+      if (!isSwitching && isPlaying) setStatus('Connection stalled — retrying…', true);
     });
 
     document.addEventListener('keydown', (e) => {
