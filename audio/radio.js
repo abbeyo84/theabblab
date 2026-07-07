@@ -17,22 +17,6 @@
     },
     {
       id: 1,
-      name: 'KEXP 90.3',
-      url: 'https://live-aacplus-64.kexp.org/kexp64.aac',
-      freq: '90.3',
-      desc: 'Seattle Independent Radio',
-      somaChannel: null,
-    },
-    {
-      id: 2,
-      name: 'SomaFM Secret Agent',
-      url: 'https://ice.somafm.com/secretagent',
-      freq: 'SOMA',
-      desc: 'Spy Lounge • 60s Cool',
-      somaChannel: 'secretagent',
-    },
-    {
-      id: 3,
       name: 'SomaFM u80s',
       url: 'https://ice.somafm.com/u80s-128-mp3',
       freq: 'SOMA',
@@ -40,7 +24,7 @@
       somaChannel: 'u80s',
     },
     {
-      id: 4,
+      id: 2,
       name: 'SomaFM Space Station',
       url: 'https://ice5.somafm.com/spacestation-128-mp3',
       freq: 'SOMA',
@@ -336,7 +320,7 @@
         togglePlay();
       }
       const num = parseInt(e.key, 10);
-      if (num >= 1 && num <= 5) {
+      if (num >= 1 && num <= STATIONS.length) {
         selectStation(num - 1);
         if (isPlaying) setStatus(`Streaming ${STATIONS[num - 1].name}`);
       }
