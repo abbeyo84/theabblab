@@ -1,6 +1,5 @@
 /**
  * ABBEYO RADIO — Web Player
- * Station presets mirror the desktop Abbeyo Radio app.
  */
 
 (function () {
@@ -9,6 +8,7 @@
   const STATIONS = [
     {
       id: 0,
+      short: 'CKUE',
       name: 'CKUE Cool FM',
       url: 'https://blackburn-ais.leanstream.co/CKUEF2-MP3?args=web_02',
       freq: '95.1 / 100.7',
@@ -17,6 +17,25 @@
     },
     {
       id: 1,
+      short: 'KEXP',
+      name: 'KEXP 90.3',
+      url: 'https://kexp.streamguys1.com/kexp64.aac',
+      freq: '90.3',
+      desc: 'Seattle Independent Radio',
+      somaChannel: null,
+    },
+    {
+      id: 2,
+      short: 'Secret Agent',
+      name: 'SomaFM Secret Agent',
+      url: 'https://ice.somafm.com/secretagent-128-mp3',
+      freq: 'SOMA',
+      desc: 'Spy Lounge • 60s Cool',
+      somaChannel: 'secretagent',
+    },
+    {
+      id: 3,
+      short: 'u80s',
       name: 'SomaFM u80s',
       url: 'https://ice.somafm.com/u80s-128-mp3',
       freq: 'SOMA',
@@ -24,7 +43,8 @@
       somaChannel: 'u80s',
     },
     {
-      id: 2,
+      id: 4,
+      short: 'Space',
       name: 'SomaFM Space Station',
       url: 'https://ice5.somafm.com/spacestation-128-mp3',
       freq: 'SOMA',
@@ -33,7 +53,7 @@
     },
   ];
 
-  const STORAGE_KEY = 'abbeyo_radio_web';
+  const STORAGE_KEY = 'abbeyo_radio_web_v2';
 
   const audio = document.getElementById('radioAudio');
   const playBtn = document.getElementById('playBtn');
@@ -49,12 +69,14 @@
   const ledEl = document.getElementById('radioLed');
   const ledLabel = document.getElementById('ledLabel');
   const themeToggle = document.getElementById('themeToggle');
+  const presetsContainer = document.getElementById('radioPresets');
+  const stationListEl = document.getElementById('stationList');
   const vuBars = document.querySelectorAll('.radio-vu__bar');
-  const presetBtns = document.querySelectorAll('.radio-preset');
 
   let currentStation = 0;
   let isPlaying = false;
   let isAmber = false;
+  let isSwitching = false;
   let metaInterval = null;
   let vuInterval = null;
   let lastMetaKey = '';
@@ -65,10 +87,10 @@
       if (!raw) return;
       const prefs = JSON.parse(raw);
       if (typeof prefs.volume === 'number') {
-        volumeSlider.value = prefs.volume;
-        audio.volume = prefs.volume / 100;
+        volumeSlider.value = Math.min(100, Math.max(0, prefs.volume));
+        audio.volume = volumeSlider.value / 100;
       }
-      if (typeof prefs.station === 'number' && prefs.station < STATIONS.length) {
+      if (typeof prefs.station === 'number' && prefs.station >= 0 && prefs.station < STATIONS.length) {
         currentStation = prefs.station;
       }
       if (prefs.theme === 'amber') {
@@ -106,30 +128,99 @@
     document.querySelector('.radio-vu').classList.toggle('is-active', isPlaying);
   }
 
-  function selectStation(index) {
-    currentStation = index;
-    const station = STATIONS[index];
-
-    presetBtns.forEach((btn, i) => {
-      btn.classList.toggle('is-active', i === index);
-      btn.setAttribute('aria-pressed', String(i === index));
+  function updatePresetButtons() {
+    const buttons = presetsContainer.querySelectorAll('.radio-preset');
+    buttons.forEach((btn) => {
+      const index = parseInt(btn.dataset.preset, 10);
+      const active = index === currentStation;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
     });
+  }
 
+  function updateStationUI(station) {
     stationEl.textContent = station.name;
     freqEl.textContent = station.freq;
     trackEl.textContent = 'Ready to stream';
     artistEl.textContent = station.desc;
     clearArt();
     lastMetaKey = '';
+    updatePresetButtons();
+  }
 
-    audio.src = station.url;
+  function loadStream(url) {
+    return new Promise((resolve, reject) => {
+      isSwitching = true;
+
+      const onCanPlay = () => {
+        cleanup();
+        isSwitching = false;
+        resolve();
+      };
+
+      const onError = () => {
+        cleanup();
+        isSwitching = false;
+        const code = audio.error?.code || 'unknown';
+        reject(new Error(`Stream failed (code ${code})`));
+      };
+
+      const timeout = setTimeout(() => {
+        cleanup();
+        isSwitching = false;
+        if (audio.readyState >= 2) {
+          resolve();
+        } else {
+          reject(new Error('Stream connection timed out'));
+        }
+      }, 12000);
+
+      function cleanup() {
+        clearTimeout(timeout);
+        audio.removeEventListener('canplay', onCanPlay);
+        audio.removeEventListener('error', onError);
+      }
+
+      audio.pause();
+      audio.removeAttribute('src');
+      audio.load();
+
+      audio.addEventListener('canplay', onCanPlay, { once: true });
+      audio.addEventListener('error', onError, { once: true });
+
+      audio.src = url;
+      audio.load();
+    });
+  }
+
+  async function selectStation(index, autoPlay = false) {
+    if (index < 0 || index >= STATIONS.length) return;
+
+    currentStation = index;
+    const station = STATIONS[index];
+    updateStationUI(station);
     savePrefs();
 
-    if (isPlaying) {
-      audio.play().catch(onPlayError);
+    try {
+      await loadStream(station.url);
+      if (autoPlay || isPlaying) {
+        await audio.play();
+        isPlaying = true;
+        updatePlayButton();
+        startVuAnimation();
+        startMetaPolling();
+        setStatus(`Streaming ${station.name}`);
+      } else {
+        setStatus(`${station.name} selected — press play`);
+      }
+      fetchMetadata();
+    } catch (err) {
+      if (autoPlay || isPlaying) {
+        onPlayError(err);
+      } else {
+        setStatus(`${station.name} selected — press play to connect`);
+      }
     }
-
-    fetchMetadata();
   }
 
   function clearArt() {
@@ -237,8 +328,10 @@
     isPlaying = false;
     updatePlayButton();
     stopVuAnimation();
-    setStatus('Stream error — try another preset or check your connection.', true);
-    console.error('[ABBEYO RADIO]', err);
+    stopMetaPolling();
+    const station = STATIONS[currentStation];
+    setStatus(`Stream error on ${station.name} — try another preset or check your connection.`, true);
+    console.error('[ABBEYO RADIO]', station.url, err);
   }
 
   async function togglePlay() {
@@ -247,35 +340,50 @@
       isPlaying = false;
       updatePlayButton();
       stopVuAnimation();
+      stopMetaPolling();
       setStatus('Paused');
       return;
     }
 
-    if (!audio.src) selectStation(currentStation);
-
+    const station = STATIONS[currentStation];
     setStatus('Connecting…');
+
     try {
+      if (!audio.src || audio.readyState < 2) {
+        await loadStream(station.url);
+      }
       await audio.play();
       isPlaying = true;
       updatePlayButton();
       startVuAnimation();
       startMetaPolling();
-      setStatus(`Streaming ${STATIONS[currentStation].name}`);
+      setStatus(`Streaming ${station.name}`);
     } catch (err) {
       onPlayError(err);
     }
   }
 
-  function initPresets() {
-    presetBtns.forEach((btn) => {
+  function buildPresets() {
+    presetsContainer.innerHTML = STATIONS.map((station, index) => `
+      <button class="radio-preset${index === 0 ? ' is-active' : ''}" data-preset="${index}" aria-pressed="${index === 0}">
+        <span class="radio-preset__num">${index + 1}</span>${station.short}
+      </button>
+    `).join('');
+
+    presetsContainer.querySelectorAll('.radio-preset').forEach((btn) => {
       btn.addEventListener('click', () => {
         const index = parseInt(btn.dataset.preset, 10);
-        selectStation(index);
-        if (isPlaying) {
-          setStatus(`Streaming ${STATIONS[index].name}`);
-        }
+        selectStation(index, isPlaying);
       });
     });
+  }
+
+  function buildStationList() {
+    stationListEl.innerHTML = STATIONS.map((station) => `
+      <li class="radio-station-item">
+        <strong>${station.name}</strong> — <span>${station.desc}${station.freq !== 'SOMA' ? ` · ${station.freq}` : ''}</span>
+      </li>
+    `).join('');
   }
 
   function initControls() {
@@ -299,18 +407,26 @@
     });
 
     audio.addEventListener('pause', () => {
-      if (!audio.ended) {
+      if (!audio.ended && !isSwitching) {
         isPlaying = false;
         updatePlayButton();
         stopVuAnimation();
       }
     });
 
-    audio.addEventListener('waiting', () => setStatus('Buffering…'));
-    audio.addEventListener('stalled', () => setStatus('Connection stalled — retrying…', true));
+    audio.addEventListener('waiting', () => {
+      if (!isSwitching) setStatus('Buffering…');
+    });
+
+    audio.addEventListener('stalled', () => {
+      if (!isSwitching) setStatus('Connection stalled — retrying…', true);
+    });
 
     audio.addEventListener('error', () => {
-      onPlayError(new Error(audio.error?.message || 'Playback failed'));
+      if (isSwitching) return;
+      if (isPlaying) {
+        onPlayError(new Error(audio.error?.message || 'Playback failed'));
+      }
     });
 
     document.addEventListener('keydown', (e) => {
@@ -321,17 +437,17 @@
       }
       const num = parseInt(e.key, 10);
       if (num >= 1 && num <= STATIONS.length) {
-        selectStation(num - 1);
-        if (isPlaying) setStatus(`Streaming ${STATIONS[num - 1].name}`);
+        selectStation(num - 1, isPlaying);
       }
     });
   }
 
   function init() {
     loadPrefs();
-    initPresets();
+    buildPresets();
+    buildStationList();
     initControls();
-    selectStation(currentStation);
+    updateStationUI(STATIONS[currentStation]);
     audio.volume = volumeSlider.value / 100;
     updatePlayButton();
     setStatus('Press play or hit spacebar to start');

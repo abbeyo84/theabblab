@@ -75,17 +75,7 @@
           <span class="radio-vu__bar"></span>
         </div>
 
-        <div class="radio-presets" role="group" aria-label="Station presets">
-          <button class="radio-preset is-active" data-preset="0" aria-pressed="true">
-            <span class="radio-preset__num">1</span>CKUE
-          </button>
-          <button class="radio-preset" data-preset="1" aria-pressed="false">
-            <span class="radio-preset__num">2</span>u80s
-          </button>
-          <button class="radio-preset" data-preset="2" aria-pressed="false">
-            <span class="radio-preset__num">3</span>Space
-          </button>
-        </div>
+        <div class="radio-presets" id="radioPresets" role="group" aria-label="Station presets"></div>
 
         <div class="radio-controls">
           <button class="radio-play" id="playBtn" aria-label="Play">
@@ -106,16 +96,12 @@
         <p class="radio-status" id="radioStatus" role="status" aria-live="polite">Press play or hit spacebar to start</p>
       </div>
 
-      <audio id="radioAudio" preload="none" crossorigin="anonymous"></audio>
+      <audio id="radioAudio" preload="none"></audio>
     </main>
 
     <section class="radio-stations-info" aria-labelledby="stations-heading">
       <h2 id="stations-heading">Station Guide</h2>
-      <ul class="radio-station-list">
-        <li class="radio-station-item"><strong>CKUE Cool FM</strong> — <span>Classic Hits • 80s 90s Today · 95.1 / 100.7</span></li>
-        <li class="radio-station-item"><strong>SomaFM u80s</strong> — <span>Underground 80s</span></li>
-        <li class="radio-station-item"><strong>SomaFM Space Station</strong> — <span>Spaced-out ambient &amp; electronica</span></li>
-      </ul>
+      <ul class="radio-station-list" id="stationList"></ul>
     </section>
   </div>
 
