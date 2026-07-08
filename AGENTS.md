@@ -110,6 +110,15 @@ theabblab/
 - Link Video, Documents, Tools, Pictures, AI sections as content is ready
 - Optional: `_redirects` for clean URLs site-wide
 
+## Grok ↔ Clara bridge
+
+Cross-agent communication: `/home/abbeyo-ai/grok-clara-bridge/`
+
+At session start, run `grok-clara-bridge/scripts/check-bridge.sh` and process pending `clara-to-grok/tasks/`.
+After work, write responses to `grok-to-clara/responses/` and update `IMPROVEMENT-LOG.md`.
+
+Clara queues strategy; Grok implements and deploys. See `~/.grok/rules/clara-bridge.md`.
+
 ## New session quick start
 
 User may open a new chat and say e.g. "update the shop section" or "continue work on theabblab". Grok should:
