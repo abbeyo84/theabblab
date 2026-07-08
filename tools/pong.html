@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LAB PONG — Classic arcade Pong from The Abb Lab. Two-player couch battles or solo vs AI.">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta property="og:title" content="LAB PONG — The Abb Lab">
+  <meta property="og:description" content="Classic arcade Pong — two players or vs the lab AI.">
+  <title>LAB PONG — The Abb Lab</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/tools/pong.css">
+</head>
+<body class="pong-page">
+
+  <div class="pong-page__bg" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="pong-topbar">
+      <a href="../index.html#tools" class="pong-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Tools
+      </a>
+      <div class="pong-brand">
+        <span class="pong-brand__parent">The Abb Lab · ABBEYO ENTERTAINMENT</span>
+        <span class="pong-brand__name">LAB PONG</span>
+      </div>
+    </header>
+
+    <main class="pong-main">
+      <div class="pong-unit">
+        <div class="pong-unit__header">
+          <h1 class="pong-unit__title">LAB <span>Pong</span></h1>
+          <div class="pong-status" id="gameStatus">
+            <span class="pong-status__dot"></span>
+            <span id="statusLabel">Select Mode</span>
+          </div>
+        </div>
+
+        <div class="pong-mode" role="group" aria-label="Game mode">
+          <button type="button" class="pong-mode__btn is-active" id="modeTwoPlayer" aria-pressed="true" data-mode="two">
+            2 Players
+          </button>
+          <button type="button" class="pong-mode__btn" id="modeOnePlayer" aria-pressed="false" data-mode="one">
+            1 Player vs AI
+          </button>
+        </div>
+
+        <div class="pong-cabinet">
+          <div class="pong-scoreboard" aria-live="polite">
+            <span class="pong-scoreboard__player" id="leftLabel">Player 1</span>
+            <span class="pong-scoreboard__score" id="scoreLeft">0</span>
+            <span class="pong-scoreboard__divider">:</span>
+            <span class="pong-scoreboard__score" id="scoreRight">0</span>
+            <span class="pong-scoreboard__player" id="rightLabel">Player 2</span>
+          </div>
+
+          <div class="pong-screen">
+            <canvas id="pongCanvas" width="800" height="500" aria-label="Pong game field"></canvas>
+            <div class="pong-overlay" id="gameOverlay">
+              <p class="pong-overlay__title" id="overlayTitle">LAB PONG</p>
+              <p class="pong-overlay__msg" id="overlayMsg">Press Space or click Start to serve</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pong-controls">
+          <button type="button" class="btn btn--primary" id="btnStart">Start / Serve</button>
+          <button type="button" class="btn btn--ghost" id="btnPause">Pause</button>
+          <button type="button" class="btn btn--ghost" id="btnReset">Reset</button>
+        </div>
+
+        <div class="pong-instructions">
+          <h2 class="pong-instructions__title">Controls</h2>
+          <div class="pong-instructions__grid">
+            <div class="pong-instructions__card">
+              <h3 class="pong-instructions__label">Left Paddle</h3>
+              <ul class="pong-instructions__keys">
+                <li><kbd>W</kbd> Move up</li>
+                <li><kbd>S</kbd> Move down</li>
+              </ul>
+            </div>
+            <div class="pong-instructions__card" id="rightControlsCard">
+              <h3 class="pong-instructions__label" id="rightControlsLabel">Right Paddle</h3>
+              <ul class="pong-instructions__keys" id="rightControlsList">
+                <li><kbd>↑</kbd> Move up</li>
+                <li><kbd>↓</kbd> Move down</li>
+              </ul>
+            </div>
+            <div class="pong-instructions__card">
+              <h3 class="pong-instructions__label">Game</h3>
+              <ul class="pong-instructions__keys">
+                <li><kbd>Space</kbd> Start / Serve</li>
+                <li><kbd>P</kbd> Pause</li>
+                <li><kbd>R</kbd> Reset</li>
+              </ul>
+            </div>
+          </div>
+          <p class="pong-instructions__note">First to <strong>11</strong> points wins. Classic paddle physics — angle changes based on where the ball hits the paddle.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/tools/pong.js?v=1" defer></script>
+</body>
+</html>

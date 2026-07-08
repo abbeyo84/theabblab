@@ -1232,6 +1232,34 @@ button {
   background: linear-gradient(135deg, #1a1f2e 0%, #2d1f3d 50%, #1a2a2e 100%);
 }
 
+.media-card__visual--pong {
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.08) 52%, transparent 52%),
+    radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 30%),
+    radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 30%),
+    linear-gradient(135deg, #0a0a0a 0%, #141820 50%, #0a0a0a 100%);
+}
+
+.media-card__visual--pong::before,
+.media-card__visual--pong::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 4px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.media-card__visual--pong::before {
+  left: 18%;
+}
+
+.media-card__visual--pong::after {
+  right: 18%;
+}
+
 .media-card__visual--pictures {
   background: linear-gradient(135deg, #221a2e 0%, #1f2d35 50%, #1a2820 100%);
 }
