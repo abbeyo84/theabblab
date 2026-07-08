@@ -1,5 +1,5 @@
 /**
- * LAB PONG — Classic Arcade Game
+ * ABBEYO PONG — Classic Arcade Game
  */
 (function () {
   'use strict';
@@ -100,9 +100,9 @@
   function updateLabels() {
     els.leftLabel.textContent = 'Player 1';
     if (mode === 'one') {
-      els.rightLabel.textContent = 'Lab AI';
-      els.rightControlsLabel.textContent = 'Lab AI';
-      els.rightControlsList.innerHTML = '<li>Controlled by the lab</li><li>Reacts to ball trajectory</li>';
+      els.rightLabel.textContent = 'Abbeyo AI';
+      els.rightControlsLabel.textContent = 'Abbeyo AI';
+      els.rightControlsList.innerHTML = '<li>Controlled by Abbeyo</li><li>Reacts to ball trajectory</li>';
     } else {
       els.rightLabel.textContent = 'Player 2';
       els.rightControlsLabel.textContent = 'Right Paddle';
@@ -420,7 +420,7 @@
       els.statusLabel.textContent = 'Ready';
       els.overlay.classList.remove('is-hidden');
       if (state === 'idle') {
-        els.overlayTitle.textContent = 'LAB PONG';
+        els.overlayTitle.textContent = 'ABBEYO PONG';
         els.overlayMsg.textContent = 'Press Space or click Start to serve';
       }
     }
