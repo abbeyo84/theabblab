@@ -1,6 +1,8 @@
 # Deploy rules for The Abb Lab
 
-When making any change to this repo, Grok must deploy unless the user explicitly says not to.
+**No website edits, commits, or pushes without Nicholas's explicit approval.**
+
+After he approves, Grok deploys — do not hand off deploy steps to him.
 
 ```bash
 cd /home/abbeyo-ai/theabblab

@@ -16,9 +16,13 @@ description: >
 2. Read `AGENTS.md` in the repo root for full project context
 3. Read the specific files you need to change
 
-## Deploy (required unless user says not to)
+## Approval (hard rule)
 
-After completing changes, always commit and push:
+**No file edits, commits, or pushes without Nicholas's explicit approval.** Propose first; implement only after he says yes.
+
+## Deploy (only after approval)
+
+After Nicholas approves and changes are made, commit and push:
 
 ```bash
 cd /home/abbeyo-ai/theabblab

@@ -2,6 +2,16 @@
 
 This file is loaded automatically in every Grok session when working in this repo. Follow it for all site changes.
 
+## Approval required (hard rule)
+
+**Nicholas is the sole authority over theabblab.com.** No exceptions.
+
+- **Do not** edit website files (`index.html`, `style.css`, `script.js`, `audio/*`, `assets/*`, etc.) without his **explicit approval**
+- **Do not** commit or push to `main` without his **explicit approval**
+- Propose changes first; wait for a clear yes (`approved`, `do it`, `yes`, `push it`, etc.) before touching files or deploying
+- Reading, planning, and explaining are fine without approval
+- This rule overrides any other deploy or "always push" instruction in this repo
+
 ## Project identity
 
 - **Brand:** The Abb Lab — an **ABBEYO ENTERTAINMENT** company
@@ -13,9 +23,11 @@ This file is loaded automatically in every Grok session when working in this rep
 - **Stack:** Static HTML/CSS/JS — no build step, no framework
 - **Hosting:** Cloudflare Pages (auto-deploys from `main`)
 
-## Deploy workflow (always do this after changes)
+## Deploy workflow (only after Nicholas approves)
 
-Grok must run these commands itself — never tell the user to push manually.
+**Get explicit approval before any edit, commit, or push.**
+
+After approval, Grok runs deploy — never tell Nicholas to push manually:
 
 ```bash
 cd /home/abbeyo-ai/theabblab
@@ -117,7 +129,7 @@ Cross-agent communication: `/home/abbeyo-ai/grok-clara-bridge/`
 At session start, run `grok-clara-bridge/scripts/check-bridge.sh` and process pending `clara-to-grok/tasks/`.
 After work, write responses to `grok-to-clara/responses/` and update `IMPROVEMENT-LOG.md`.
 
-Clara queues strategy; Grok implements and deploys. See `~/.grok/rules/clara-bridge.md`.
+Clara queues strategy; Grok implements **only after Nicholas approves**. See `~/.grok/rules/clara-bridge.md`.
 
 ## New session quick start
 
@@ -125,5 +137,5 @@ User may open a new chat and say e.g. "update the shop section" or "continue wor
 
 1. Work in `/home/abbeyo-ai/theabblab`
 2. Read this file and relevant source files
-3. Make the requested changes
-4. Commit and push to `main` unless the user says not to deploy
+3. Propose changes — **do not edit files until Nicholas explicitly approves**
+4. After approval only: make changes, then commit and push to `main`
