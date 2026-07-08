@@ -31,6 +31,22 @@
       desc: 'Spaced-out ambient & electronica',
       somaChannel: 'spacestation',
     },
+    kexp: {
+      id: 'kexp',
+      name: 'KEXP 90.3',
+      url: 'https://kexp.streamguys1.com/kexp160.aac',
+      freq: '90.3',
+      desc: 'Seattle Independent Radio',
+      somaChannel: null,
+    },
+    secretagent: {
+      id: 'secretagent',
+      name: 'SomaFM Secret Agent',
+      url: 'https://ice1.somafm.com/secretagent-128-mp3',
+      freq: 'SOMA',
+      desc: 'Spy Lounge • 60s Cool',
+      somaChannel: 'secretagent',
+    },
   };
 
   var els = {};
@@ -362,11 +378,9 @@
       }
 
       var num = parseInt(e.key, 10);
-      if (num >= 1 && num <= 3) {
-        var buttons = document.querySelectorAll('.radio-preset');
-        if (buttons[num - 1]) {
-          selectStation(stationFromButton(buttons[num - 1]), isPlaying);
-        }
+      var buttons = document.querySelectorAll('.radio-preset');
+      if (num >= 1 && num <= buttons.length && buttons[num - 1]) {
+        selectStation(stationFromButton(buttons[num - 1]), isPlaying);
       }
     });
   }
