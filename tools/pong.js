@@ -15,6 +15,7 @@
   var MAX_BALL_SPEED = 14;
   var PADDLE_SPEED = 7;
   var AI_SPEED = 5.5;
+  var SERVE_DELAY_MS = 2500;
 
   var els = {};
   var canvas;
@@ -26,6 +27,8 @@
   var scoreRight = 0;
   var animId = null;
   var audioCtx = null;
+  var serveTimer = null;
+  var countdownInterval = null;
 
   var leftPaddle = { x: PADDLE_MARGIN, y: FIELD_H / 2 - PADDLE_H / 2, w: PADDLE_W, h: PADDLE_H };
   var rightPaddle = { x: FIELD_W - PADDLE_MARGIN - PADDLE_W, y: FIELD_H / 2 - PADDLE_H / 2, w: PADDLE_W, h: PADDLE_H };
@@ -134,7 +137,42 @@
     playBeep(440, 0.05, 0.08);
   }
 
+  function clearServeTimer() {
+    if (serveTimer) {
+      clearTimeout(serveTimer);
+      serveTimer = null;
+    }
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
+  }
+
+  function scheduleAutoServe() {
+    clearServeTimer();
+    var secondsLeft = Math.ceil(SERVE_DELAY_MS / 1000);
+    els.overlayMsg.textContent = 'Next serve in ' + secondsLeft + '…';
+
+    countdownInterval = setInterval(function () {
+      secondsLeft--;
+      if (secondsLeft > 0) {
+        els.overlayMsg.textContent = 'Next serve in ' + secondsLeft + '…';
+      }
+    }, 1000);
+
+    serveTimer = setTimeout(function () {
+      clearServeTimer();
+      if (state === 'serving') {
+        state = 'playing';
+        serveBall();
+        updateUI();
+        startLoop();
+      }
+    }, SERVE_DELAY_MS);
+  }
+
   function resetGame() {
+    clearServeTimer();
     stopLoop();
     scoreLeft = 0;
     scoreRight = 0;
@@ -151,6 +189,7 @@
       resetGame();
     }
     if (state === 'idle' || state === 'serving') {
+      clearServeTimer();
       state = 'playing';
       serveBall();
       updateUI();
@@ -338,9 +377,9 @@
     resetBall(true);
     stopLoop();
     els.overlayTitle.textContent = 'Point Scored';
-    els.overlayMsg.textContent = 'Press Space or Start to serve';
     updateUI();
     draw();
+    scheduleAutoServe();
   }
 
   function updateScores() {
@@ -364,6 +403,9 @@
     } else if (state === 'over') {
       els.status.classList.add('is-over');
       els.statusLabel.textContent = 'Game Over';
+      els.overlay.classList.remove('is-hidden');
+    } else if (state === 'serving') {
+      els.statusLabel.textContent = 'Serving';
       els.overlay.classList.remove('is-hidden');
     } else {
       els.statusLabel.textContent = 'Ready';

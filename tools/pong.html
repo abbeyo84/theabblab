@@ -65,7 +65,7 @@
             <canvas id="pongCanvas" width="800" height="500" aria-label="Pong game field"></canvas>
             <div class="pong-overlay" id="gameOverlay">
               <p class="pong-overlay__title" id="overlayTitle">LAB PONG</p>
-              <p class="pong-overlay__msg" id="overlayMsg">Press Space or click Start to serve</p>
+              <p class="pong-overlay__msg" id="overlayMsg">Press Space or click Start — auto-serves after each point</p>
             </div>
           </div>
         </div>
@@ -102,12 +102,12 @@
               </ul>
             </div>
           </div>
-          <p class="pong-instructions__note">First to <strong>11</strong> points wins. Classic paddle physics — angle changes based on where the ball hits the paddle.</p>
+          <p class="pong-instructions__note">First to <strong>11</strong> points wins. After each point, the next serve starts automatically in a few seconds — press Space to serve sooner. Classic paddle physics — angle changes based on where the ball hits the paddle.</p>
         </div>
       </div>
     </main>
   </div>
 
-  <script src="/tools/pong.js?v=1" defer></script>
+  <script src="/tools/pong.js?v=2" defer></script>
 </body>
 </html>
