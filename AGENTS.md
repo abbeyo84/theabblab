@@ -6,6 +6,8 @@ This file is loaded automatically in every Grok session when working in this rep
 
 - **Brand:** The Abb Lab — an **ABBEYO ENTERTAINMENT** company
 - **Live site:** https://theabblab.com
+- **Strategic role:** Nicholas's **primary website** for generating income and creative projects — built to scale toward **mass wealth**
+- **Clara (OpenClaw) reference:** `/home/abbeyo-ai/.openclaw/workspace/THEABBLAB.md`
 - **GitHub repo:** https://github.com/abbeyo84/theabblab
 - **Local path:** `/home/abbeyo-ai/theabblab`
 - **Stack:** Static HTML/CSS/JS — no build step, no framework
