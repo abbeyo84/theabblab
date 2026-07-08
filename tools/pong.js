@@ -238,14 +238,23 @@
   }
 
   function startLoop() {
-    if (animId) return;
+    stopLoop();
+    if (state !== 'playing') return;
+
     function loop() {
+      if (state !== 'playing') {
+        animId = null;
+        return;
+      }
+      update();
+      draw();
       if (state === 'playing') {
-        update();
-        draw();
         animId = requestAnimationFrame(loop);
+      } else {
+        animId = null;
       }
     }
+
     animId = requestAnimationFrame(loop);
   }
 
