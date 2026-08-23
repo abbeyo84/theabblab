@@ -49,7 +49,7 @@ When editing cached assets (JS/CSS), bump the `?v=` query string in HTML (e.g. `
 theabblab/
 ├── index.html          # Main single-page site
 ├── style.css           # Main site styles (dark theme, lab/studio vibe)
-├── script.js           # Nav, scroll reveals, contact form
+├── script.js           # Nav, scroll reveals
 ├── AGENTS.md           # This file — project rules for Grok
 ├── _redirects          # Cloudflare: /tools/pong → /games/pong
 ├── audio/
@@ -75,7 +75,6 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 | Hero | `#hero` | Live — CTAs to Pong and Radio |
 | Games | `#games` | Live — ABBEYO PONG |
 | Radio | `#radio` | Live — ABBEYO RADIO |
-| Contact | `#contact` | Live — form simulated in script.js |
 
 ## Content rules
 
@@ -112,7 +111,6 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 ## Known TODOs
 
 - Shop (later) — Printful / merch when Nicholas is ready
-- Contact form backend (currently simulated)
 - Optional: extra library sections (video, documents, pictures, AI) when content exists
 
 ## Grok ↔ Clara bridge

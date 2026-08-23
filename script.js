@@ -1,6 +1,6 @@
 /**
  * The Abb Lab — ABBEYO ENTERTAINMENT
- * Navigation, scroll reveals, contact form
+ * Navigation, scroll reveals
  */
 
 (function () {
@@ -12,8 +12,6 @@
   const navLinks = document.querySelectorAll('.nav__link');
   const reveals = document.querySelectorAll('.reveal');
   const particlesContainer = document.getElementById('particles');
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
   const yearEl = document.getElementById('year');
 
   function init() {
@@ -24,7 +22,6 @@
     initScrollReveal();
     initActiveNav();
     initParticles();
-    initContactForm();
     initHeroReveal();
   }
 
@@ -170,50 +167,6 @@
 
       particlesContainer.appendChild(particle);
     }
-  }
-
-  function initContactForm() {
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const name = contactForm.querySelector('#name');
-      const email = contactForm.querySelector('#email');
-      const message = contactForm.querySelector('#message');
-
-      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-        showStatus(formStatus, 'Please fill in all required fields.', 'error');
-        return;
-      }
-
-      if (!isValidEmail(email.value)) {
-        showStatus(formStatus, 'Please enter a valid email address.', 'error');
-        return;
-      }
-
-      submitBtn.classList.add('is-loading');
-      showStatus(formStatus, '', '');
-
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-
-      submitBtn.classList.remove('is-loading');
-      showStatus(formStatus, 'Message received. The lab will respond shortly.', 'success');
-      contactForm.reset();
-      setTimeout(() => showStatus(formStatus, '', ''), 5000);
-    });
-  }
-
-  function isValidEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  function showStatus(el, message, type) {
-    if (!el) return;
-    el.textContent = message;
-    el.className = 'form__status';
-    if (type) el.classList.add(`is-${type}`);
   }
 
   if (document.readyState === 'loading') {
