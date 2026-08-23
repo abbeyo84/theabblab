@@ -1,6 +1,6 @@
 /**
  * The Abb Lab — ABBEYO ENTERTAINMENT
- * Navigation, shop filters, scroll reveals, forms
+ * Navigation, scroll reveals, contact form
  */
 
 (function () {
@@ -9,33 +9,22 @@
   const header = document.getElementById('header');
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav__link, .nav__dropdown-link');
-  const libraryToggle = document.getElementById('libraryToggle');
-  const libraryDropdown = libraryToggle?.closest('.nav__dropdown');
+  const navLinks = document.querySelectorAll('.nav__link');
   const reveals = document.querySelectorAll('.reveal');
   const particlesContainer = document.getElementById('particles');
   const contactForm = document.getElementById('contactForm');
-  const subscribeForm = document.getElementById('subscribeForm');
   const formStatus = document.getElementById('formStatus');
-  const subscribeStatus = document.getElementById('subscribeStatus');
   const yearEl = document.getElementById('year');
-  const shopFilters = document.querySelectorAll('.shop__filter');
-  const merchCards = document.querySelectorAll('.merch-card[data-category]');
 
   function init() {
     setYear();
     initHeader();
     initMobileNav();
-    initLibraryDropdown();
     initSmoothScroll();
     initScrollReveal();
     initActiveNav();
     initParticles();
-    initShopFilters();
-    initCollectionLinks();
-    initShopButtons();
     initContactForm();
-    initSubscribeForm();
     initHeroReveal();
   }
 
@@ -58,7 +47,6 @@
       navMenu.classList.toggle('is-open', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
-      if (!isOpen && libraryDropdown) libraryDropdown.classList.remove('is-open');
     };
 
     navToggle.addEventListener('click', toggleMenu);
@@ -66,32 +54,11 @@
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         if (navMenu.classList.contains('is-open')) toggleMenu();
-        if (libraryDropdown) libraryDropdown.classList.remove('is-open');
       });
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (navMenu.classList.contains('is-open')) toggleMenu();
-        if (libraryDropdown) libraryDropdown.classList.remove('is-open');
-      }
-    });
-  }
-
-  function initLibraryDropdown() {
-    if (!libraryToggle || !libraryDropdown) return;
-
-    libraryToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = libraryDropdown.classList.toggle('is-open');
-      libraryToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!libraryDropdown.contains(e.target)) {
-        libraryDropdown.classList.remove('is-open');
-        libraryToggle.setAttribute('aria-expanded', 'false');
-      }
+      if (e.key === 'Escape' && navMenu.classList.contains('is-open')) toggleMenu();
     });
   }
 
@@ -205,53 +172,6 @@
     }
   }
 
-  function initShopFilters() {
-    if (!shopFilters.length) return;
-
-    shopFilters.forEach((filter) => {
-      filter.addEventListener('click', () => {
-        const category = filter.dataset.filter;
-
-        shopFilters.forEach((f) => {
-          const active = f === filter;
-          f.classList.toggle('is-active', active);
-          f.setAttribute('aria-selected', String(active));
-        });
-
-        merchCards.forEach((card) => {
-          const match = category === 'all' || card.dataset.category === category;
-          card.classList.toggle('is-hidden', !match);
-        });
-      });
-    });
-  }
-
-  function initCollectionLinks() {
-    document.querySelectorAll('[data-scroll]').forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const category = link.dataset.scroll;
-        const shop = document.getElementById('shop');
-        const targetFilter = document.querySelector(`.shop__filter[data-filter="${category}"]`);
-
-        if (shop) scrollToElement(shop);
-        if (targetFilter) targetFilter.click();
-      });
-    });
-  }
-
-  function initShopButtons() {
-    document.querySelectorAll('[data-shop]').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const product = btn.getAttribute('data-shop');
-        console.info(`[The Abb Lab] Shop placeholder: ${product}`);
-        showStatus(formStatus, 'Store coming soon — connect your Printful or shop URL.', 'success');
-        setTimeout(() => showStatus(formStatus, '', ''), 3000);
-      });
-    });
-  }
-
   function initContactForm() {
     if (!contactForm) return;
 
@@ -282,27 +202,6 @@
       showStatus(formStatus, 'Message received. The lab will respond shortly.', 'success');
       contactForm.reset();
       setTimeout(() => showStatus(formStatus, '', ''), 5000);
-    });
-  }
-
-  function initSubscribeForm() {
-    if (!subscribeForm) return;
-
-    subscribeForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const email = subscribeForm.querySelector('#subscribeEmail');
-      if (!email.value.trim() || !isValidEmail(email.value)) {
-        showStatus(subscribeStatus, 'Please enter a valid email address.', 'error');
-        return;
-      }
-
-      showStatus(subscribeStatus, '', '');
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
-      showStatus(subscribeStatus, 'Subscribed — you will receive drop alerts.', 'success');
-      subscribeForm.reset();
-      setTimeout(() => showStatus(subscribeStatus, '', ''), 5000);
     });
   }
 

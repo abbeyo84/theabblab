@@ -1133,6 +1133,10 @@ button {
   gap: var(--space-md);
 }
 
+.media-grid--single {
+  max-width: 720px;
+}
+
 .media-card {
   background: var(--color-bg-card);
   border: 1px solid rgba(148, 163, 184, 0.06);
@@ -1695,6 +1699,10 @@ button {
 
   .media-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-grid--single {
+    grid-template-columns: 1fr;
   }
 
   .library-hub__grid {

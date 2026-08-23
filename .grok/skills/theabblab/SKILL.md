@@ -4,7 +4,7 @@ description: >
   Work on The Abb Lab website (theabblab.com) — ABBEYO ENTERTAINMENT commerce hub.
   Use when the user mentions theabblab, The Abb Lab, abb lab site, main website,
   theabblab.com, or wants to update/deploy the site. Covers editing HTML/CSS/JS,
-  ABBEYO RADIO player, shop sections, and git push to Cloudflare Pages.
+  ABBEYO RADIO player, ABBEYO PONG, and git push to Cloudflare Pages.
   Triggers on /theabblab.
 ---
 
@@ -42,6 +42,7 @@ git push origin main
 |------|------|
 | Main page | `index.html`, `style.css`, `script.js` |
 | Radio player | `audio/abbeyo-radio.html`, `audio/radio.js`, `audio/radio.css` |
+| Games | `games/pong.html`, `games/pong.js`, `games/pong.css` |
 | Assets | `assets/logo/`, `assets/favicon/`, `assets/images/` |
 | Project rules | `AGENTS.md` |
 

@@ -49,12 +49,17 @@ When editing cached assets (JS/CSS), bump the `?v=` query string in HTML (e.g. `
 theabblab/
 ├── index.html          # Main single-page site
 ├── style.css           # Main site styles (dark theme, lab/studio vibe)
-├── script.js           # Nav, shop filters, scroll reveals, forms
+├── script.js           # Nav, scroll reveals, contact form
 ├── AGENTS.md           # This file — project rules for Grok
+├── _redirects          # Cloudflare: /tools/pong → /games/pong
 ├── audio/
 │   ├── abbeyo-radio.html   # ABBEYO RADIO web player
 │   ├── radio.js            # Player logic (STATIONS map, event delegation)
 │   └── radio.css           # Player styles
+├── games/
+│   ├── pong.html           # ABBEYO PONG
+│   ├── pong.js
+│   └── pong.css
 └── assets/
     ├── logo/logo.svg
     ├── favicon/favicon.svg
@@ -63,29 +68,20 @@ theabblab/
 
 ## Site sections (index.html)
 
+Keep the homepage simple until Nicholas asks to grow it. Shop and extra library sections are intentionally off the live page.
+
 | Section | ID | Status |
 |---------|-----|--------|
-| Hero | `#hero` | Live |
-| About | `#about` | Live |
-| Shop | `#shop` | Live — filters: All, Bitcoin, Strange Realms, Abb Lab Core |
-| Collections | `#collections` | Live |
-| Library hub | `#library` | Live |
-| Audio | `#audio` | Live — links to ABBEYO RADIO |
-| Video | `#video` | Placeholder |
-| Documents | `#documents` | Placeholder |
-| Tools | `#tools` | Placeholder |
-| Pictures | `#pictures` | Placeholder |
-| AI | `#ai` | Placeholder |
-| Releases | `#releases` | Live |
-| Archive | `#archive` | Live |
-| Subscribe | `#subscribe` | Live — form simulated in script.js |
+| Hero | `#hero` | Live — CTAs to Pong and Radio |
+| Games | `#games` | Live — ABBEYO PONG |
+| Radio | `#radio` | Live — ABBEYO RADIO |
 | Contact | `#contact` | Live — form simulated in script.js |
 
 ## Content rules
 
 - **No personal name** on the public site — brand is The Abb Lab / ABBEYO ENTERTAINMENT only
 - **Emails:** `orders@theabblab.com`, `lab@theabblab.com`
-- **Shop buttons** use `data-shop` attributes — Printful URLs still `#` placeholders
+- **Shop** is deferred — do not add merch/shop sections until Nicholas asks
 - **Design:** Dark theme, teal/violet accents, Instrument Serif + Outfit fonts, premium lab/studio aesthetic
 - Match existing naming, spacing, and CSS variable patterns when adding code
 
@@ -115,12 +111,9 @@ theabblab/
 
 ## Known TODOs
 
-- Connect Printful shop URLs (`data-shop` buttons)
+- Shop (later) — Printful / merch when Nicholas is ready
 - Contact form backend (currently simulated)
-- Subscribe form backend (currently simulated)
-- Real product images for merch cards
-- Link Video, Documents, Tools, Pictures, AI sections as content is ready
-- Optional: `_redirects` for clean URLs site-wide
+- Optional: extra library sections (video, documents, pictures, AI) when content exists
 
 ## Grok ↔ Clara bridge
 
