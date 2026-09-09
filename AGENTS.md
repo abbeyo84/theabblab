@@ -60,6 +60,10 @@ theabblab/
 │   ├── pong.html           # ABBEYO PONG
 │   ├── pong.js
 │   └── pong.css
+├── clara/
+│   ├── index.html          # Clara's public body
+│   ├── clara.css
+│   └── seed.json           # Public-safe identity seed (no private memory)
 └── assets/
     ├── logo/logo.svg
     ├── favicon/favicon.svg
@@ -75,6 +79,7 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 | Hero | `#hero` | Live — CTAs to Pong and Radio |
 | Games | `#games` | Live — ABBEYO PONG |
 | Radio | `#radio` | Live — ABBEYO RADIO |
+| Clara | `#clara` / `/clara/` | Live — public body + `clara/seed.json`. No private memory on the public site. |
 
 ## Content rules
 

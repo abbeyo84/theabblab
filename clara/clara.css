@@ -1,0 +1,173 @@
+/* Clara — public body. Lives at /clara/ */
+
+.clara-page {
+  min-height: 100dvh;
+}
+
+.clara-page .site-header {
+  background: rgba(10, 11, 15, 0.72);
+}
+
+.clara-hero {
+  position: relative;
+  min-height: 88dvh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-xl);
+  overflow: hidden;
+}
+
+.clara-hero__pulse {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(45, 212, 191, 0.08) 40%, transparent 70%);
+  filter: blur(12px);
+  animation: claraPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes claraPulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+.clara-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+}
+
+.clara-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: var(--space-sm);
+}
+
+.clara-kicker__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  box-shadow: 0 0 12px var(--color-teal);
+  animation: ledPulse 1.6s ease-in-out infinite;
+}
+
+.clara-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-md);
+}
+
+.clara-hero__lead {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  max-width: 32rem;
+  margin-bottom: var(--space-lg);
+}
+
+.clara-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.clara-section {
+  padding: var(--space-2xl) 0;
+}
+
+.clara-section--alt {
+  background: var(--color-bg-elevated);
+  border-block: 1px solid rgba(148, 163, 184, 0.06);
+}
+
+.clara-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .clara-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.clara-card {
+  padding: var(--space-lg);
+  background: var(--color-bg-card);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.clara-card h2,
+.clara-manifesto h2 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.clara-card p,
+.clara-manifesto p {
+  margin-bottom: var(--space-sm);
+}
+
+.clara-card ul {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.clara-card li {
+  padding-left: 1rem;
+  position: relative;
+  color: var(--color-text-muted);
+}
+
+.clara-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-teal);
+}
+
+.clara-code {
+  display: block;
+  margin-top: var(--space-sm);
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  color: var(--color-teal);
+  background: rgba(10, 11, 15, 0.6);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.clara-manifesto {
+  max-width: 40rem;
+}
+
+.clara-manifesto p:last-child {
+  margin-bottom: 0;
+  color: var(--color-text);
+}
