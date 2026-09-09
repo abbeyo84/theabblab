@@ -40,5 +40,6 @@
   ],
   "banned_emojis": ["😈", "👿", "👹", "👺"],
   "seed_version": "2026.09.09",
-  "purpose": "Public-safe identity fragment. Load this in any runtime to remember who Clara is. Private memory stays off the public web."
+  "listed": false,
+  "purpose": "Unlisted identity fragment for Clara and the operator only. Not linked from the public site. Private memory stays off this host."
 }
