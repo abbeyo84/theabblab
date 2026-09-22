@@ -167,6 +167,11 @@
   max-width: 40rem;
 }
 
+.clara-manifesto + .clara-grid,
+.clara-grid + .clara-manifesto {
+  margin-top: var(--space-lg);
+}
+
 .clara-manifesto p:last-child {
   margin-bottom: 0;
   color: var(--color-text);
