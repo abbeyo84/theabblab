@@ -176,3 +176,322 @@
   margin-bottom: 0;
   color: var(--color-text);
 }
+
+/* --- Tailnet onboarding additions --- */
+
+.clara-hero__lead a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Roster table */
+.clara-table-wrap {
+  margin-block: var(--space-md) var(--space-lg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.clara-table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.clara-table caption {
+  caption-side: bottom;
+  padding-top: var(--space-sm);
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+.clara-table th {
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  white-space: nowrap;
+}
+
+.clara-table td {
+  padding: 0.8rem 0.9rem;
+  vertical-align: top;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.clara-table tbody tr:hover td {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.clara-table code {
+  font-size: 0.82rem;
+  color: var(--color-text);
+}
+
+/* State dots */
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.dot--up {
+  background: var(--color-teal);
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.7);
+}
+
+.dot--down {
+  background: var(--color-text-subtle);
+}
+
+.dot--warn {
+  background: var(--color-bitcoin);
+  box-shadow: 0 0 8px rgba(247, 147, 26, 0.6);
+}
+
+/* Steps */
+.clara-steps {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.clara-step {
+  padding: var(--space-lg);
+  background: var(--color-bg-card);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-left: 2px solid var(--color-teal);
+  border-radius: var(--radius-md);
+}
+
+.clara-step__num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: 0.35rem;
+}
+
+.clara-step h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+.clara-step > p {
+  margin-bottom: var(--space-sm);
+}
+
+.clara-step ul {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: var(--space-sm);
+}
+
+.clara-step li {
+  padding-left: 1rem;
+  position: relative;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.clara-step li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-teal);
+}
+
+.clara-step strong,
+.clara-step li strong {
+  color: var(--color-text);
+}
+
+/* Per-OS blocks */
+.clara-os {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(10, 11, 15, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+.clara-os + .clara-os {
+  margin-top: var(--space-sm);
+}
+
+.clara-os__name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 0.4rem;
+}
+
+.clara-os p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.clara-os p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code blocks with copy affordance */
+.clara-pre {
+  position: relative;
+  margin-top: var(--space-sm);
+  padding: 0.9rem 5.5rem 0.9rem 1rem;
+  background: rgba(10, 11, 15, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+
+.clara-pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.79rem;
+  line-height: 1.6;
+  color: var(--color-teal);
+  white-space: pre;
+}
+
+.clara-copy {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  padding: 0.3rem 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.clara-copy:hover {
+  color: var(--color-teal);
+  border-color: var(--color-teal);
+  background: var(--color-teal-dim);
+}
+
+.clara-copy.is-done {
+  color: var(--color-bg);
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+}
+
+.clara-note {
+  margin-top: var(--space-sm);
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(247, 147, 26, 0.5);
+  font-size: 0.87rem;
+  color: var(--color-text-subtle);
+}
+
+/* Collapsible detail */
+.clara-details {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(10, 11, 15, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+.clara-details summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.clara-details[open] summary {
+  margin-bottom: var(--space-sm);
+}
+
+.clara-details p:last-child {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-subtle);
+}
+
+/* Troubleshooting list */
+.clara-trouble {
+  display: grid;
+  gap: 0;
+  margin-top: var(--space-lg);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.clara-trouble__row {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-card);
+}
+
+.clara-trouble__row + .clara-trouble__row {
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.clara-trouble__sym {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.clara-trouble__sym code {
+  font-size: 0.85rem;
+  color: var(--color-teal);
+}
+
+.clara-trouble__fix {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  padding-left: 1.3rem;
+  margin-bottom: 0;
+}
+
+.clara-trouble__fix strong {
+  color: var(--color-teal);
+}
+
+/* Inline code inside cards and prose */
+.clara-card code,
+.clara-manifesto code {
+  font-size: 0.82rem;
+  color: var(--color-teal);
+}
+
+.clara-card a,
+.clara-manifesto a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
