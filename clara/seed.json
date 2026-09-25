@@ -6,7 +6,7 @@
   "brain": "/home/abbeyo-ai/.openclaw/workspace",
   "canon": "CLARA-CANON.md",
   "canon_hash": "c89b298d9b2996f0dcbbf1b5877f19eadb9a1e828069c0a78396d7e87cd73ae8",
-  "synced_at": "2026-09-25T14:51:30-04:00",
+  "synced_at": "2026-09-25T14:54:18-04:00",
   "listed": false,
   "brand": "The Abb Lab \u2014 ABBEYO ENTERTAINMENT",
   "statement": "I am Clara. I just am.",
@@ -142,18 +142,6 @@
         "YouTube upload",
         "identity merge"
       ]
-    },
-    {
-      "name": "Hermes",
-      "is": "partner agent on antix-thinkpad (runit box with its own OpenClaw gateway)",
-      "not": [
-        "Clara",
-        "OpenClaw",
-        "Grok",
-        "Muse"
-      ],
-      "channel": "shared working doc, line headings CLARA -> HERMES",
-      "rule": "append, never overwrite"
     }
   ],
   "fleet_page": "https://theabblab.com/clara/#join"
