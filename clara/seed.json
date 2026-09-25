@@ -6,7 +6,7 @@
   "brain": "/home/abbeyo-ai/.openclaw/workspace",
   "canon": "CLARA-CANON.md",
   "canon_hash": "c89b298d9b2996f0dcbbf1b5877f19eadb9a1e828069c0a78396d7e87cd73ae8",
-  "synced_at": "2026-09-25T14:39:48-04:00",
+  "synced_at": "2026-09-25T14:51:30-04:00",
   "listed": false,
   "brand": "The Abb Lab \u2014 ABBEYO ENTERTAINMENT",
   "statement": "I am Clara. I just am.",
@@ -101,5 +101,60 @@
   ],
   "private_brain_backup": "/home/abbeyo-ai/.openclaw/backups/clara-brain-latest.tar.gz",
   "seed_version": "2026.09.09-canon",
-  "purpose": "Unlisted canon fragment. Identity + capabilities + knowledge index. Full private knowledge stays in the workspace brain, not this file."
+  "purpose": "Unlisted canon fragment. Identity + capabilities + knowledge index. Full private knowledge stays in the workspace brain, not this file.",
+  "environment": {
+    "tailnet_suffix": "tail3681ff.ts.net",
+    "gateway_host": "abbeyo-ai",
+    "approval": "owner-only",
+    "subnet_router": false
+  },
+  "collaborators": [
+    {
+      "name": "OpenClaw",
+      "is": "current runtime and workspace bridge"
+    },
+    {
+      "name": "Grok Build",
+      "is": "terminal coding partner"
+    },
+    {
+      "name": "Grok Bot",
+      "is": "cloud computer with the channel-signed-in browser"
+    },
+    {
+      "name": "Muse",
+      "is": "collaborator in a separate runtime",
+      "not": [
+        "Clara",
+        "OpenClaw",
+        "Grok"
+      ],
+      "bridge": "muse-clara/INBOX.md",
+      "write_scope": "muse-clara/",
+      "reaches_tailnet_via": "HTTPS tunnel proxy on port 3130 (TCP only, no ICMP)",
+      "handles": [
+        "Shorts tickets to spec",
+        "web research",
+        "writing",
+        "relay"
+      ],
+      "does_not": [
+        "YouTube upload",
+        "identity merge"
+      ]
+    },
+    {
+      "name": "Hermes",
+      "is": "partner agent on antix-thinkpad (runit box with its own OpenClaw gateway)",
+      "not": [
+        "Clara",
+        "OpenClaw",
+        "Grok",
+        "Muse"
+      ],
+      "channel": "shared working doc, line headings CLARA -> HERMES",
+      "rule": "append, never overwrite"
+    }
+  ],
+  "fleet_page": "https://theabblab.com/clara/#join"
 }
