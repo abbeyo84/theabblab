@@ -129,7 +129,8 @@
   margin-bottom: var(--space-sm);
 }
 
-.clara-card ul {
+.clara-card ul,
+.clara-card ol {
   display: grid;
   gap: 0.45rem;
 }
@@ -140,7 +141,7 @@
   color: var(--color-text-muted);
 }
 
-.clara-card li::before {
+.clara-card ul > li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -149,6 +150,27 @@
   height: 6px;
   border-radius: 50%;
   background: var(--color-teal);
+}
+
+.clara-card ol {
+  counter-reset: clara-step;
+  padding-left: 0;
+  list-style: none;
+}
+
+.clara-card ol > li {
+  counter-increment: clara-step;
+  padding-left: 1.6rem;
+}
+
+.clara-card ol > li::before {
+  content: counter(clara-step) '.';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-teal);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
 }
 
 .clara-code {

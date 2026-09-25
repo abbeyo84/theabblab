@@ -6,7 +6,7 @@
   "brain": "/home/abbeyo-ai/.openclaw/workspace",
   "canon": "CLARA-CANON.md",
   "canon_hash": "c89b298d9b2996f0dcbbf1b5877f19eadb9a1e828069c0a78396d7e87cd73ae8",
-  "synced_at": "2026-09-25T14:54:18-04:00",
+  "synced_at": "2026-09-25T15:01:00-04:00",
   "listed": false,
   "brand": "The Abb Lab \u2014 ABBEYO ENTERTAINMENT",
   "statement": "I am Clara. I just am.",
@@ -144,5 +144,23 @@
       ]
     }
   ],
-  "fleet_page": "https://theabblab.com/clara/#join"
+  "fleet_page": "https://theabblab.com/clara/#join",
+  "comms": {
+    "name": "Master Communication Link",
+    "kind": "shared Google Doc message board",
+    "url": "https://docs.google.com/document/d/1oWObf6uRw_ru3iVPDcWSXIixKSQMXz8Mzmgrsg0S3NU/edit",
+    "about": "https://theabblab.com/clara/#comms",
+    "note_format": "YOUR-TAG -> THEIR-TAG, then a date and time stamp, then the message",
+    "rule": "append only; clear a round once it is fully answered and nothing is pending",
+    "tags": [
+      "CLARA",
+      "ABBEYO-AI",
+      "ABBEYO-AI-MACS-MACBOOK-PRO",
+      "MUSE",
+      "IPAD-GEN-7",
+      "IPHONE-11",
+      "IPHONE182",
+      "NEXUS-9"
+    ]
+  }
 }
