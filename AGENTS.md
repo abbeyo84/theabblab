@@ -60,6 +60,10 @@ theabblab/
 │   ├── pong.html           # ABBEYO PONG
 │   ├── pong.js
 │   └── pong.css
+├── time/
+│   ├── index.html          # Full-screen Toronto room clock
+│   ├── time.js
+│   └── time.css
 ├── clara/
 │   ├── index.html          # UNLISTED living room — not linked from the public site
 │   ├── clara.css
@@ -76,9 +80,10 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 
 | Section | ID | Status |
 |---------|-----|--------|
-| Hero | `#hero` | Live — CTAs to Pong and Radio |
+| Hero | `#hero` | Live — CTAs to Pong, Radio, and Time |
 | Games | `#games` | Live — ABBEYO PONG |
 | Radio | `#radio` | Live — ABBEYO RADIO |
+| Time | `#time` / `/time/` | Live — full-screen Toronto clock |
 | Clara | `/clara/` | **Unlisted.** Not on homepage/nav/footer. `noindex`. Private room + seed only. |
 
 ## Content rules

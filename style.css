@@ -1170,6 +1170,26 @@ button {
     linear-gradient(135deg, #0f1a14 0%, #1a1528 50%, #111318 100%);
 }
 
+.media-card__visual--time {
+  background:
+    radial-gradient(circle at 50% 58%, rgba(0, 205, 0, 0.2) 0%, transparent 42%),
+    linear-gradient(160deg, #1a1a1a, #000000);
+}
+
+.media-card__visual--time::after {
+  content: '12:00';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.75rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #00cd00;
+  font-variant-numeric: tabular-nums;
+}
+
 .media-card__live {
   position: absolute;
   top: var(--space-sm);
@@ -1282,6 +1302,12 @@ button {
 .media-card__live--alive {
   color: var(--color-teal);
   border-color: rgba(45, 212, 191, 0.35);
+}
+
+.media-card__live--still {
+  animation: none;
+  color: #00cd00;
+  border-color: rgba(0, 205, 0, 0.35);
 }
 
 .media-card__body {

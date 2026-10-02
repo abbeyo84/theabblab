@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A full-screen Toronto clock from The Abb Lab. Leave it on a laptop or monitor and read it from across the room.">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta property="og:title" content="Time — The Abb Lab">
+  <meta property="og:description" content="A full-screen Toronto clock. Leave it on a screen and read it from across the room.">
+  <meta property="og:url" content="https://theabblab.com/time/">
+  <title>Time — The Abb Lab</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
+  <link rel="canonical" href="https://theabblab.com/time/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="time.css?v=1">
+</head>
+<body class="clock-page" data-theme="lcd">
+  <div class="clock-stage">
+    <header class="clock-bar">
+      <a class="clock-home" href="../index.html">The Abb Lab</a>
+      <div class="clock-bar__actions">
+        <button type="button" class="clock-btn" id="settingsBtn" aria-expanded="false" aria-controls="settings">Settings</button>
+        <button type="button" class="clock-btn clock-btn--launch" id="launchBtn">Full screen</button>
+      </div>
+    </header>
+
+    <main class="clock-face">
+      <p class="clock-place">Toronto</p>
+      <p class="clock-time" id="clock"></p>
+      <p class="clock-date" id="date"></p>
+    </main>
+
+    <ul class="clock-cities" id="cities" aria-label="Current time in ten cities"></ul>
+
+    <div class="clock-settings" id="settings" hidden>
+    <div class="clock-settings__group">
+      <p class="clock-settings__label" id="hoursLabel">Hours</p>
+      <div class="clock-hours" role="group" aria-labelledby="hoursLabel">
+        <button type="button" class="clock-btn is-active" data-hours="12" aria-pressed="true">12-hour</button>
+        <button type="button" class="clock-btn" data-hours="24" aria-pressed="false">24-hour</button>
+      </div>
+    </div>
+    <div class="clock-settings__group">
+      <p class="clock-settings__label" id="colourLabel">Colour</p>
+      <div class="clock-colours" role="group" aria-labelledby="colourLabel">
+        <button type="button" class="clock-choice is-active" data-choice="lcd" aria-pressed="true"><span class="clock-swatch" data-swatch="lcd"></span>LCD</button>
+        <button type="button" class="clock-choice" data-choice="amber" aria-pressed="false"><span class="clock-swatch" data-swatch="amber"></span>Amber</button>
+        <button type="button" class="clock-choice" data-choice="ice" aria-pressed="false"><span class="clock-swatch" data-swatch="ice"></span>Ice</button>
+        <button type="button" class="clock-choice" data-choice="lab" aria-pressed="false"><span class="clock-swatch" data-swatch="lab"></span>Lab</button>
+        <button type="button" class="clock-choice" data-choice="white" aria-pressed="false"><span class="clock-swatch" data-swatch="white"></span>White</button>
+        <button type="button" class="clock-choice" data-choice="crimson" aria-pressed="false"><span class="clock-swatch" data-swatch="crimson"></span>Crimson</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="time.js?v=1"></script>
+</body>
+</html>
