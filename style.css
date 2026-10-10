@@ -1284,6 +1284,15 @@ button {
   right: 18%;
 }
 
+.media-card__visual--maze {
+  background:
+    linear-gradient(rgba(45, 212, 191, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.18) 1px, transparent 1px),
+    radial-gradient(circle at 70% 40%, rgba(154, 130, 199, 0.35) 0 8px, transparent 9px),
+    linear-gradient(135deg, #071416 0%, #12101c 100%);
+  background-size: 18px 18px, 18px 18px, auto, auto;
+}
+
 .media-card__visual--pictures {
   background: linear-gradient(135deg, #221a2e 0%, #1f2d35 50%, #1a2820 100%);
 }

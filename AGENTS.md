@@ -59,7 +59,10 @@ theabblab/
 ├── games/
 │   ├── pong.html           # ABBEYO PONG
 │   ├── pong.js
-│   └── pong.css
+│   ├── pong.css
+│   ├── maze.html           # ABBEYO MAZE
+│   ├── maze.js
+│   └── maze.css
 ├── time/
 │   ├── index.html          # Full-screen room clock
 │   ├── time.js
@@ -80,8 +83,8 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 
 | Section | ID | Status |
 |---------|-----|--------|
-| Hero | `#hero` | Live — CTAs to Pong, Radio, and Time |
-| Games | `#games` | Live — ABBEYO PONG |
+| Hero | `#hero` | Live — CTAs to Pong, Maze, Radio, and Time |
+| Games | `#games` | Live — ABBEYO PONG and ABBEYO MAZE |
 | Radio | `#radio` | Live — ABBEYO RADIO |
 | Time | `#time` / `/time/` | Live — full-screen room clock. Face is time and date only. Location and brightness live in Settings. Default zone is Toronto. |
 | Clara | `/clara/` | **Unlisted.** Not on homepage/nav/footer. `noindex`. Private room + seed only. |

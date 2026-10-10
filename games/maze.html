@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ABBEYO MAZE — a grid chase from The Abb Lab. Clear the nodes, scramble the drones, wrap the belt.">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta property="og:title" content="ABBEYO MAZE — The Abb Lab">
+  <meta property="og:description" content="Clear the lab grid. Four drones hunt the bead. Charges turn the chase around.">
+  <title>ABBEYO MAZE — The Abb Lab</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css?v=7">
+  <link rel="stylesheet" href="maze.css?v=1">
+</head>
+<body class="maze-page">
+
+  <div class="maze-page__bg" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="maze-topbar">
+      <a href="../index.html#games" class="maze-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Games
+      </a>
+      <div class="maze-brand">
+        <span class="maze-brand__parent">The Abb Lab · ABBEYO ENTERTAINMENT</span>
+        <span class="maze-brand__name">ABBEYO MAZE</span>
+      </div>
+    </header>
+
+    <main class="maze-main">
+      <div class="maze-unit">
+        <div class="maze-unit__header">
+          <h1 class="maze-unit__title">ABBEYO <span>Maze</span></h1>
+          <div class="maze-status" id="gameStatus">
+            <span class="maze-status__dot"></span>
+            <span id="statusLabel">Ready</span>
+          </div>
+        </div>
+
+        <div class="maze-cabinet">
+          <div class="maze-scoreboard" aria-live="polite">
+            <div><span>Score</span><strong id="scoreValue">0</strong></div>
+            <div><span>Best</span><strong id="bestValue">0</strong></div>
+            <div><span>Level</span><strong id="levelValue">1</strong></div>
+            <div><span>Lives</span><strong id="livesValue">3</strong></div>
+          </div>
+          <div class="maze-screen">
+            <canvas id="mazeCanvas" width="504" height="552" aria-label="Abbeyo Maze playfield"></canvas>
+            <div class="maze-overlay" id="gameOverlay">
+              <p class="maze-overlay__title" id="overlayTitle">ABBEYO MAZE</p>
+              <p class="maze-overlay__msg" id="overlayMsg">Arrows or WASD. Clear every node.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="maze-controls">
+          <button type="button" class="btn btn--primary" data-maze="start">Start</button>
+          <button type="button" class="btn btn--ghost" data-maze="pause">Pause</button>
+          <button type="button" class="btn btn--ghost" data-maze="reset">Reset</button>
+        </div>
+
+        <div class="maze-pad" aria-label="Direction pad">
+          <button type="button" class="maze-pad__up" data-dir="up" aria-label="Up">↑</button>
+          <button type="button" class="maze-pad__left" data-dir="left" aria-label="Left">←</button>
+          <button type="button" class="maze-pad__down" data-dir="down" aria-label="Down">↓</button>
+          <button type="button" class="maze-pad__right" data-dir="right" aria-label="Right">→</button>
+        </div>
+
+        <div class="maze-instructions">
+          <h2 class="maze-instructions__title">Controls</h2>
+          <div class="maze-instructions__grid">
+            <div class="maze-instructions__card">
+              <h3 class="maze-instructions__label">Move</h3>
+              <ul class="maze-instructions__keys">
+                <li><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> Direction</li>
+                <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Direction</li>
+              </ul>
+            </div>
+            <div class="maze-instructions__card">
+              <h3 class="maze-instructions__label">Drones</h3>
+              <ul class="maze-instructions__keys">
+                <li><span class="maze-swatch" style="background:#2dd4bf"></span>Keel hunts you</li>
+                <li><span class="maze-swatch" style="background:#9a82c7"></span>Vela takes the far side</li>
+                <li><span class="maze-swatch" style="background:#d4a574"></span>Orbit circles the charges</li>
+                <li><span class="maze-swatch" style="background:#7eb6ff"></span>Nix drifts the lanes</li>
+              </ul>
+            </div>
+            <div class="maze-instructions__card">
+              <h3 class="maze-instructions__label">Game</h3>
+              <ul class="maze-instructions__keys">
+                <li><kbd>Space</kbd> Start</li>
+                <li><kbd>P</kbd> Pause</li>
+                <li><kbd>R</kbd> Reset</li>
+              </ul>
+            </div>
+          </div>
+          <p class="maze-instructions__note">Eat every node to clear the sector. Violet charges scramble the drones so you can tag them. The open belt across the middle wraps to the other side. Each sector is a little faster. You have three lives.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="maze.js?v=1" defer></script>
+</body>
+</html>
