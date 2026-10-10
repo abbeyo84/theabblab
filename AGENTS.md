@@ -61,7 +61,7 @@ theabblab/
 │   ├── pong.js
 │   └── pong.css
 ├── time/
-│   ├── index.html          # Full-screen Toronto room clock
+│   ├── index.html          # Full-screen room clock
 │   ├── time.js
 │   └── time.css
 ├── clara/
@@ -83,7 +83,7 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 | Hero | `#hero` | Live — CTAs to Pong, Radio, and Time |
 | Games | `#games` | Live — ABBEYO PONG |
 | Radio | `#radio` | Live — ABBEYO RADIO |
-| Time | `#time` / `/time/` | Live — full-screen Toronto clock |
+| Time | `#time` / `/time/` | Live — full-screen room clock. Face is time and date only. Location and brightness live in Settings. Default zone is Toronto. |
 | Clara | `/clara/` | **Unlisted.** Not on homepage/nav/footer. `noindex`. Private room + seed only. |
 
 ## Content rules

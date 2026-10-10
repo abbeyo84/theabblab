@@ -7,6 +7,7 @@
   --clock-muted: #5f8f5f;
   --clock-line: rgba(0, 205, 0, 0.45);
   --clock-ink: #061006;
+  --clock-level: 100;
   margin: 0;
   min-height: 100vh;
   min-height: 100dvh;
@@ -90,6 +91,7 @@ a {
 }
 
 .clock-stage {
+  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   height: 100dvh;
@@ -100,6 +102,11 @@ a {
 }
 
 .clock-bar {
+  position: absolute;
+  top: 1rem;
+  left: 1.4rem;
+  right: 1.4rem;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -152,15 +159,7 @@ a {
   justify-content: center;
   text-align: center;
   min-height: 0;
-}
-
-.clock-place {
-  margin: 0 0 0.35rem;
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(1.35rem, 3vw, 2.6rem);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--clock-date);
+  opacity: calc(var(--clock-level) / 100);
 }
 
 .clock-time {
@@ -180,40 +179,6 @@ a {
   font-size: clamp(1.2rem, 2.5vw, 2.7rem);
   line-height: 1.2;
   color: var(--clock-date);
-}
-
-.clock-cities {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  width: min(1100px, 100%);
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.85rem 1rem;
-}
-
-.clock-city {
-  text-align: center;
-  min-width: 0;
-}
-
-.clock-city__name {
-  display: block;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--clock-muted);
-}
-
-.clock-city__time {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: clamp(0.95rem, 1.5vw, 1.35rem);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.03em;
-  color: var(--clock-time);
 }
 
 .clock-settings {
@@ -249,6 +214,40 @@ a {
   gap: 0.45rem;
 }
 
+.clock-select {
+  width: min(16rem, 100%);
+  color: var(--clock-time);
+  background: #0a0a0a;
+  border: 1px solid var(--clock-line);
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.clock-select option {
+  color: #f4f4f4;
+  background: #111;
+}
+
+.clock-level {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 28rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clock-muted);
+}
+
+.clock-range {
+  flex: 1;
+  accent-color: var(--clock-time);
+  min-width: 0;
+}
+
 .clock-choice {
   display: inline-flex;
   align-items: center;
@@ -269,7 +268,7 @@ a {
 .clock-swatch[data-swatch="white"] { background: #ffffff; }
 .clock-swatch[data-swatch="crimson"] { background: #ff5a5a; }
 
-.clock-page.is-fs:not(.is-awake) .clock-bar {
+.clock-page:not(.is-awake) .clock-bar {
   opacity: 0;
   pointer-events: none;
 }
@@ -291,12 +290,6 @@ a {
 
 .clock-page.is-fs .clock-face {
   min-height: 0;
-}
-
-@media (max-width: 800px) {
-  .clock-cities {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 520px) {
