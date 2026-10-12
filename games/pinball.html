@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ABBEYO PINBALL — Space Cadet on a lab table, from The Abb Lab.">
+  <meta name="description" content="ABBEYO PINBALL — from The Abb Lab. Z, slash, and Space.">
   <meta name="theme-color" content="#0a0b0f">
   <meta property="og:title" content="ABBEYO PINBALL — The Abb Lab">
-  <meta property="og:description" content="Space Cadet pinball. Flippers on Shift, plunger on Space.">
+  <meta property="og:description" content="Z left, / right, Space to launch.">
   <title>ABBEYO PINBALL — The Abb Lab</title>
 
   <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
@@ -15,82 +15,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/style.css?v=8">
-  <link rel="stylesheet" href="/games/pinball.css?v=1">
+  <link rel="stylesheet" href="/games/pinball.css?v=2">
 </head>
 <body class="pinball-page">
 
   <div class="pinball-page__bg" aria-hidden="true"></div>
 
-  <div class="container">
+  <div class="pinball-shell">
     <header class="pinball-topbar">
       <a href="../index.html#games" class="pinball-back">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Back to Games
+        Games
       </a>
-      <div class="pinball-brand">
-        <span class="pinball-brand__parent">The Abb Lab · ABBEYO ENTERTAINMENT</span>
-        <span class="pinball-brand__name">ABBEYO PINBALL</span>
-      </div>
+      <span class="pinball-brand__name">ABBEYO PINBALL</span>
+      <button type="button" class="btn btn--ghost pinball-full" id="pinballFull">Full screen</button>
     </header>
 
-    <main class="pinball-main">
-      <div class="pinball-unit">
-        <div class="pinball-unit__header">
-          <h1 class="pinball-unit__title">ABBEYO <span>Pinball</span></h1>
-          <div class="pinball-status">
-            <span class="pinball-status__dot"></span>
-            <span>Space Cadet</span>
-          </div>
-        </div>
-
-        <div class="pinball-cabinet">
-          <iframe
-            id="pinballFrame"
-            class="pinball-frame"
-            src="https://pinball.alula.me/"
-            title="ABBEYO PINBALL — Space Cadet table"
-            allow="autoplay; fullscreen; gamepad"
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
-
-        <div class="pinball-controls">
-          <button type="button" class="btn btn--primary" id="pinballFocus">Click table to play</button>
-          <button type="button" class="btn btn--ghost" id="pinballFull">Full screen</button>
-        </div>
-
-        <div class="pinball-instructions">
-          <h2 class="pinball-instructions__title">Controls</h2>
-          <div class="pinball-instructions__grid">
-            <div class="pinball-instructions__card">
-              <h3 class="pinball-instructions__label">Flippers</h3>
-              <ul class="pinball-instructions__keys">
-                <li><kbd>Shift</kbd> left and right</li>
-                <li><kbd>Z</kbd> left flipper</li>
-                <li><kbd>/</kbd> right flipper</li>
-              </ul>
-            </div>
-            <div class="pinball-instructions__card">
-              <h3 class="pinball-instructions__label">Launch</h3>
-              <ul class="pinball-instructions__keys">
-                <li><kbd>Space</kbd> hold, then release</li>
-                <li><kbd>Down</kbd> plunger</li>
-              </ul>
-            </div>
-            <div class="pinball-instructions__card">
-              <h3 class="pinball-instructions__label">Table</h3>
-              <ul class="pinball-instructions__keys">
-                <li>Click the table so the keys land</li>
-                <li><kbd>F1</kbd> options, if the table offers them</li>
-              </ul>
-            </div>
-          </div>
-          <p class="pinball-instructions__note">Space Cadet table, played in the browser. The table files stay on their original host. This page does not ship them.</p>
-        </div>
-      </div>
+    <main class="pinball-stage" id="pinballStage">
+      <canvas id="canvas" class="pinball-canvas" tabindex="0" aria-label="Abbeyo Pinball table"></canvas>
+      <p class="pinball-loading" id="pinballLoading">Loading table…</p>
     </main>
+
+    <p class="pinball-keys" aria-label="Controls">
+      <span><kbd>Z</kbd> left</span>
+      <span><kbd>/</kbd> right</span>
+      <span><kbd>Space</kbd> launch</span>
+    </p>
   </div>
 
-  <script src="/games/pinball.js?v=1" defer></script>
+  <script src="/games/pinball.js?v=2" defer></script>
 </body>
 </html>
