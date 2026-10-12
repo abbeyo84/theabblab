@@ -60,7 +60,11 @@ theabblab/
 │   ├── pong.html           # ABBEYO PONG
 │   ├── pong.js
 │   ├── pong.css
-│   ├── maze.html           # ABBEYO MAZE
+│   ├── pinball.html        # ABBEYO PINBALL (embeds the Space Cadet browser table)
+│   ├── pinball.js
+│   └── pinball.css
+├── _wip/                   # not deployed (underscore folder)
+│   ├── maze.html           # ABBEYO MAZE — unpublished until Nicholas says it is ready
 │   ├── maze.js
 │   └── maze.css
 ├── time/
@@ -83,8 +87,8 @@ Keep the homepage simple until Nicholas asks to grow it. Shop and extra library 
 
 | Section | ID | Status |
 |---------|-----|--------|
-| Hero | `#hero` | Live — CTAs to Pong, Maze, Radio, and Time |
-| Games | `#games` | Live — ABBEYO PONG and ABBEYO MAZE |
+| Hero | `#hero` | Live — CTAs to Pong, Pinball, Radio, and Time |
+| Games | `#games` | Live — ABBEYO PONG and ABBEYO PINBALL. Maze is in `_wip/` and must stay off the public site until Nicholas asks. |
 | Radio | `#radio` | Live — ABBEYO RADIO |
 | Time | `#time` / `/time/` | Live — full-screen room clock. Face is time and date only. Location and brightness live in Settings. Default zone is Toronto. |
 | Clara | `/clara/` | **Unlisted.** Not on homepage/nav/footer. `noindex`. Private room + seed only. |

@@ -1,3 +1,7 @@
 /tools/pong /games/pong 301
 /tools/pong.html /games/pong.html 301
 /clara.html /clara/ 301
+/games/maze / 301
+/games/maze.html / 301
+/games/maze.css / 301
+/games/maze.js / 301

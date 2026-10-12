@@ -1284,13 +1284,34 @@ button {
   right: 18%;
 }
 
-.media-card__visual--maze {
+.media-card__visual--pinball {
   background:
-    linear-gradient(rgba(45, 212, 191, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 212, 191, 0.18) 1px, transparent 1px),
-    radial-gradient(circle at 70% 40%, rgba(154, 130, 199, 0.35) 0 8px, transparent 9px),
-    linear-gradient(135deg, #071416 0%, #12101c 100%);
-  background-size: 18px 18px, 18px 18px, auto, auto;
+    radial-gradient(circle at 34% 38%, rgba(212, 165, 116, 0.7) 0 7px, transparent 8px),
+    radial-gradient(circle at 66% 34%, rgba(45, 212, 191, 0.55) 0 7px, transparent 8px),
+    radial-gradient(circle at 50% 58%, rgba(154, 130, 199, 0.45) 0 5px, transparent 6px),
+    linear-gradient(180deg, transparent 76%, rgba(255, 255, 255, 0.14) 76%, rgba(255, 255, 255, 0.14) 80%, transparent 80%),
+    linear-gradient(165deg, #10141c 0%, #1a1424 58%, #0c1016 100%);
+}
+
+.media-card__visual--pinball::before,
+.media-card__visual--pinball::after {
+  content: '';
+  position: absolute;
+  bottom: 18%;
+  width: 28px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 3px;
+}
+
+.media-card__visual--pinball::before {
+  left: 22%;
+  transform: rotate(28deg);
+}
+
+.media-card__visual--pinball::after {
+  right: 22%;
+  transform: rotate(-28deg);
 }
 
 .media-card__visual--pictures {

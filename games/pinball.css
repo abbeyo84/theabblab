@@ -1,0 +1,209 @@
+/* ABBEYO PINBALL */
+
+.pinball-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: var(--header-height);
+  padding-bottom: var(--space-xl);
+}
+
+.pinball-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 50% at 18% 18%, rgba(212, 165, 116, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 82% 78%, rgba(45, 212, 191, 0.07) 0%, transparent 60%),
+    var(--color-bg);
+}
+
+.pinball-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+
+.pinball-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.pinball-back:hover {
+  color: var(--color-text);
+}
+
+.pinball-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pinball-brand__parent {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.pinball-brand__name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.pinball-unit {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 1.25rem;
+  background: rgba(10, 12, 18, 0.72);
+  padding: var(--space-lg);
+}
+
+.pinball-unit__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.pinball-unit__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.pinball-unit__title span {
+  font-style: italic;
+  color: #d4a574;
+}
+
+.pinball-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pinball-status__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #d4a574;
+  box-shadow: 0 0 10px rgba(212, 165, 116, 0.7);
+}
+
+.pinball-cabinet {
+  border-radius: 0.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 165, 116, 0.28);
+  background: #05060a;
+  min-height: 70vh;
+}
+
+.pinball-frame {
+  display: block;
+  width: 100%;
+  height: 72vh;
+  min-height: 520px;
+  border: 0;
+  background: #05060a;
+}
+
+.pinball-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.pinball-instructions {
+  margin-top: var(--space-lg);
+}
+
+.pinball-instructions__title {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.pinball-instructions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.pinball-instructions__card {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.pinball-instructions__label {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+}
+
+.pinball-instructions__keys {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.pinball-instructions__keys li + li {
+  margin-top: 0.25rem;
+}
+
+.pinball-instructions__keys kbd {
+  display: inline-block;
+  min-width: 1.4rem;
+  padding: 0.05rem 0.35rem;
+  margin-right: 0.25rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(0, 0, 0, 0.35);
+  font-family: inherit;
+  font-size: 0.8rem;
+}
+
+.pinball-instructions__note {
+  margin: var(--space-md) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .pinball-topbar,
+  .pinball-unit__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pinball-brand {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pinball-instructions__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pinball-frame {
+    height: 78vh;
+    min-height: 420px;
+  }
+}
