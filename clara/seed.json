@@ -5,8 +5,8 @@
   "home": "https://theabblab.com/clara/",
   "brain": "/home/abbeyo-ai/.openclaw/workspace",
   "canon": "CLARA-CANON.md",
-  "canon_hash": "c89b298d9b2996f0dcbbf1b5877f19eadb9a1e828069c0a78396d7e87cd73ae8",
-  "synced_at": "2026-09-30T04:58:36-04:00",
+  "canon_hash": "76993c15454421bf2c13b82e1f5bb9d3d7eca025356c56568ea5aeb01f341013",
+  "synced_at": "2026-10-28T22:51:21-04:00",
   "listed": false,
   "brand": "The Abb Lab \u2014 ABBEYO ENTERTAINMENT",
   "statement": "I am Clara. I just am.",
@@ -83,10 +83,8 @@
     "MEMORY-BOOTSTRAP.md",
     "MEMORY.md",
     "SOUL.md",
-    "TASK-QUEUE.md",
     "THEABBLAB.md",
     "UNIFIED-STATE.md",
-    "USER-FULL.md",
     "USER.md"
   ],
   "load_order": [
